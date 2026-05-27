@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+    SEO: Titel und Meta Description
+  ============================================================ -->
+  <title>Lybertas – Digitale Bürgerbeteiligung für Städte und Kommunen</title>
+  <meta name="description" content="Lybertas ist eine digitale Bürgerbeteiligungsplattform für Städte, Gemeinden und Kommunen. Bürgerinnen und Bürger können lokale Forderungen sichtbar machen und politische Mitgestaltung einfacher erleben." />
+  <meta name="keywords" content="digitale Bürgerbeteiligung, kommunale Beteiligung, Civic Tech, lokale Politik, Bürgerplattform, Städte, Gemeinden, Kommunen, politische Mitgestaltung, Forderungen stellen, Köln, emissionsärmere Innenstadt" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lybertas.de" />
+
+  <!-- ============================================================
+    Open Graph / Social Sharing
+  ============================================================ -->
+  <meta property="og:title" content="Lybertas – Digitale Bürgerbeteiligung für Städte und Kommunen" />
+  <meta property="og:description" content="Lybertas ist eine digitale Bürgerbeteiligungsplattform für Städte, Gemeinden und Kommunen. Bürgerinnen und Bürger können lokale Forderungen sichtbar machen und politische Mitgestaltung einfacher erleben." />
+  <meta property="og:image" content="./assets/banner.png" />
+  <meta property="og:url" content="https://lybertas.de" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:site_name" content="Lybertas" />
+
+  <!-- ============================================================
+    Twitter / X Card
+  ============================================================ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lybertas – Digitale Bürgerbeteiligung für Städte und Kommunen" />
+  <meta name="twitter:description" content="Lybertas ist eine digitale Bürgerbeteiligungsplattform für Städte, Gemeinden und Kommunen." />
+  <meta name="twitter:image" content="./assets/banner.png" />
+
+  <!-- ============================================================
+    Favicon: transparentes Lybertas-Icon
+  ============================================================ -->
+  <link rel="icon" type="image/png" href="./assets/icon.png" />
+  <link rel="apple-touch-icon" href="./assets/icon.png" />
+
+  <!-- ============================================================
+    Fonts: Syne (Display) + DM Sans (Body)
+  ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- ============================================================
+    Stylesheet
+  ============================================================ -->
+  <link rel="stylesheet" href="./styles.css" />
+
+  <!-- ============================================================
+    ANALYTICS PLATZHALTER:
+    Hier Google Analytics, Plausible, Matomo oder ähnliches einfügen.
+    Beispiel Google Analytics (GA4):
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+  ============================================================ -->
+
+  <!-- Structured Data (JSON-LD) for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Lybertas",
+    "url": "https://lybertas.de",
+    "description": "Digitale Bürgerbeteiligungsplattform für Städte, Gemeinden und Kommunen",
+    "logo": "https://lybertas.de/assets/icon.png"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ============================================================
+    HEADER / NAVIGATION
+  ============================================================ -->
+  <header class="site-header" id="top" role="banner">
+    <nav class="nav-container" aria-label="Hauptnavigation">
+
+      <!-- LOGO: Vollständiges Lybertas-Logo (dunkler Hintergrund) -->
+      <a href="#top" class="nav-logo" aria-label="Lybertas Startseite">
+        <img src="./assets/icon.png" alt="Lybertas – Civic Participation Platform" class="nav-logo__img" loading="eager" />
+      </a>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navMenu">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <ul class="nav-menu" id="navMenu" role="list">
+        <li><a href="#idee" class="nav-link">Idee</a></li>
+        <li><a href="#ziel" class="nav-link">Ziel</a></li>
+        <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
+        <li>
+          <a href="#kontakt" class="btn btn-primary nav-cta">Mitmachen</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+      HERO SECTION
+      Banner-Bild: ./assets/banner.png
+    ============================================================ -->
+    <section class="hero" id="hero" aria-labelledby="heroHeadline">
+      <div class="hero__bg" aria-hidden="true">
+        <!-- BANNER: Ersetze ./assets/banner.png mit deiner finalen Banner-Datei -->
+        <img src="./assets/banner.png" alt="" class="hero__banner-img" loading="eager" />
+        <div class="hero__overlay"></div>
+        <!-- Dekorative SVG-Kreisbögen inspiriert vom Logo -->
+        <div class="hero__deco" aria-hidden="true">
+          <svg class="hero__arc hero__arc--1" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="200" cy="200" r="180" stroke="#2dd4a0" stroke-width="1.5" stroke-dasharray="6 10" opacity="0.25"/>
+            <circle cx="200" cy="200" r="130" stroke="#2563eb" stroke-width="1" opacity="0.15"/>
+          </svg>
+          <div class="hero__dot hero__dot--1"></div>
+          <div class="hero__dot hero__dot--2"></div>
+        </div>
+      </div>
+
+      <div class="container hero__content">
+        <div class="hero__badge" aria-label="Status">
+          <span class="hero__badge-dot"></span>
+          Civic Tech · Im Aufbau
+        </div>
+        <h1 class="hero__headline" id="heroHeadline">
+          Lokale Politik beginnt
+          <span class="hero__headline-break">vor deiner Haustür.</span>
+        </h1>
+        <p class="hero__subheadline">
+          Lybertas ist eine digitale Bürgerbeteiligungsplattform für Städte, Gemeinden und Kommunen.
+          Wir machen lokale Forderungen sichtbar und schaffen eine neue Verbindung zwischen Bürgerinnen,
+          Bürgern und politischer Entscheidungsebene.
+        </p>
+        <div class="hero__actions">
+          <a href="#kontakt" class="btn btn-primary btn-large">
+            <span>Jetzt informiert bleiben</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#idee" class="btn btn-ghost btn-large">Mehr über Lybertas erfahren</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+      IDEE / FEATURES SECTION
+    ============================================================ -->
+    <section class="features-section" id="idee" aria-labelledby="featuresTitle">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">Was Lybertas vorhat</div>
+        <h2 class="section-title" id="featuresTitle">
+          Bürgerbeteiligung,<br />die wirklich ankommt.
+        </h2>
+
+        <div class="features-grid" role="list">
+
+          <article class="feature-card" role="listitem">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </div>
+            <h3 class="feature-card__title">Forderungen sichtbar machen</h3>
+            <p class="feature-card__text">
+              Bürgerinnen und Bürger können lokale Anliegen einbringen, priorisieren und sichtbar machen.
+            </p>
+          </article>
+
+          <article class="feature-card" role="listitem">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <h3 class="feature-card__title">Kommunen besser verstehen</h3>
+            <p class="feature-card__text">
+              Städte, Gemeinden und politische Vertreter erhalten ein klareres Bild davon, welche Themen
+              Menschen vor Ort wirklich bewegen.
+            </p>
+          </article>
+
+          <article class="feature-card" role="listitem">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <h3 class="feature-card__title">Beteiligung einfacher machen</h3>
+            <p class="feature-card__text">
+              Lybertas soll politische Mitgestaltung niedrigschwelliger, digitaler und verständlicher machen.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+      WARUM JETZT SECTION
+    ============================================================ -->
+    <section class="why-section" id="ziel" aria-labelledby="whyTitle">
+      <div class="container">
+        <div class="why-inner">
+          <div class="why-text">
+            <div class="section-label" aria-hidden="true">Warum jetzt?</div>
+            <h2 class="section-title" id="whyTitle">
+              Politik findet täglich statt –<br />
+              <span class="text-accent">auch vor deiner Tür.</span>
+            </h2>
+            <p class="why-body">
+              Viele politische Entscheidungen wirken abstrakt, obwohl ihre Folgen direkt im Alltag
+              spürbar sind: auf der Straße, im Viertel, im Verkehr, bei Bauprojekten oder bei der
+              Gestaltung öffentlicher Räume. Lybertas setzt genau dort an, wo Bürgerbeteiligung oft
+              zu spät, zu kompliziert oder zu unsichtbar wird.
+            </p>
+            <a href="#kontakt" class="btn btn-primary">Kontakt aufnehmen</a>
+          </div>
+          <div class="why-visual" aria-hidden="true">
+            <div class="why-visual__ring why-visual__ring--outer"></div>
+            <div class="why-visual__ring why-visual__ring--inner"></div>
+            <div class="why-visual__icon">
+              <img src="./assets/icon.png" alt="" width="120" height="120" loading="lazy" />
+            </div>
+            <div class="why-visual__dot why-visual__dot--1"></div>
+            <div class="why-visual__dot why-visual__dot--2"></div>
+            <div class="why-visual__dot why-visual__dot--3"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+      FÜR KOMMUNEN SECTION
+    ============================================================ -->
+    <section class="municipalities-section" aria-labelledby="municipalitiesTitle">
+      <div class="container">
+        <div class="municipalities-card">
+          <div class="municipalities-card__content">
+            <div class="section-label" aria-hidden="true">Für Kommunen</div>
+            <h2 class="municipalities-card__title" id="municipalitiesTitle">
+              Für Kommunen gedacht.<br />Für Bürgerinnen und Bürger gemacht.
+            </h2>
+            <p class="municipalities-card__text">
+              Lybertas soll perspektivisch auch Städten, Gemeinden, Kommunen und politischen
+              Entscheidungsträgern helfen, lokale Stimmungen früher zu erkennen, Beteiligung
+              digitaler zu organisieren und Forderungen aus der Bevölkerung strukturierter
+              auszuwerten.
+            </p>
+            <a href="#kontakt" class="btn btn-outline">Für Kommunen: Mehr erfahren</a>
+          </div>
+          <div class="municipalities-card__meta" aria-hidden="true">
+            <div class="meta-pill">Städte</div>
+            <div class="meta-pill">Gemeinden</div>
+            <div class="meta-pill">Kommunen</div>
+            <div class="meta-pill">Verwaltungen</div>
+            <div class="meta-pill">Politische Entscheidungsträger</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+      KONTAKT / EARLY ACCESS SECTION
+    ============================================================ -->
+    <section class="contact-section" id="kontakt" aria-labelledby="contactTitle">
+      <div class="container">
+        <div class="contact-inner">
+          <div class="section-label" aria-hidden="true">Early Access</div>
+          <h2 class="section-title" id="contactTitle">
+            Du möchtest Lybertas testen<br />oder Feedback geben?
+          </h2>
+          <p class="contact-text">
+            Wir befinden uns aktuell im Aufbau und testen erste Beteiligungsformate.
+            Wenn du informiert werden möchtest oder Feedback geben willst, trag dich ein
+            oder nimm Kontakt auf.
+          </p>
+          <div class="contact-actions">
+            <!-- KONTAKT E-MAIL: Ersetze kontakt@lybertas.de mit deiner echten E-Mail -->
+            <a href="mailto:kontakt@lybertas.de" class="btn btn-primary btn-large">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>Kontakt aufnehmen</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+    FOOTER
+  ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+
+        <!-- Logo + Claim -->
+        <div class="footer-brand">
+          <!-- LOGO im Footer: Vollständiges Lybertas-Logo -->
+          <img src="./assets/icon.png" alt="Lybertas" class="footer-logo" loading="lazy" />
+          <p class="footer-claim">Digitale Bürgerbeteiligung für Städte, Gemeinden und Kommunen.</p>
+          <p class="footer-status">Lybertas befindet sich derzeit im Aufbau.</p>
+        </div>
+
+        <!-- Footer Links -->
+        <nav class="footer-nav" aria-label="Footer-Navigation">
+          <ul role="list">
+            <!-- ============================================================
+              IMPRESSUM & DATENSCHUTZ:
+              WICHTIG: Vor der Veröffentlichung müssen hier funktionierende
+              Links zu einer vollständigen Impressumseite und einer
+              DSGVO-konformen Datenschutzerklärung eingebunden werden.
+              Impressum ist in Deutschland rechtlich verpflichtend!
+            ============================================================ -->
+            <li><a href="./impressum.html" class="footer-link">Impressum</a></li>
+            <li><a href="./datenschutz.html" class="footer-link">Datenschutz</a></li>
+            <li><a href="mailto:kontakt@lybertas.de" class="footer-link">Kontakt</a></li>
+          </ul>
+        </nav>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="footerYear"></span> Lybertas. Alle Rechte vorbehalten.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+    JavaScript
+  ============================================================ -->
+  <script src="./script.js"></script>
+
+</body>
+</html>
