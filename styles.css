@@ -56,8 +56,8 @@
   --council-weitere:    #9CA3AF;
 
   /* Typografie */
-  --font-display:       'Syne', sans-serif;
-  --font-body:          'DM Sans', sans-serif;
+  --font-display:       'Poppins', 'Inter', system-ui, sans-serif;
+  --font-body:          'Inter', system-ui, sans-serif;
 
   /* Spacing */
   --space-xs:    0.25rem;
@@ -182,8 +182,8 @@ input, textarea, select {
 ============================================================ */
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 .section-label {
@@ -593,10 +593,10 @@ h1, h2, h3, h4 {
 
 .hero__headline {
   font-size: clamp(2.25rem, 6vw, 4rem);
-  font-weight: 800;
-  line-height: 1.18;
+  font-weight: 700;
+  line-height: 1.15;
   margin-bottom: var(--space-xl);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.015em;
 }
 
 /* Zweite Zeile der Headline: Blau-Akzent + eigene Zeile mit Abstand */
@@ -613,7 +613,7 @@ h1, h2, h3, h4 {
   max-width: 580px;
   margin-bottom: var(--space-2xl);
   line-height: 1.75;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .hero__actions {
@@ -1073,7 +1073,7 @@ h1, h2, h3, h4 {
   font-size: 0.9375rem;
   color: var(--color-text-secondary);
   line-height: 1.7;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 /* ============================================================
@@ -1104,7 +1104,7 @@ h1, h2, h3, h4 {
   color: var(--color-text-secondary);
   line-height: 1.8;
   margin-bottom: var(--space-xl);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 /* Dekoratives Logo-Element */
@@ -1252,7 +1252,7 @@ h1, h2, h3, h4 {
   color: var(--color-text-secondary);
   line-height: 1.75;
   margin-bottom: var(--space-xl);
-  font-weight: 300;
+  font-weight: 400;
   max-width: 520px;
 }
 
@@ -1312,7 +1312,7 @@ h1, h2, h3, h4 {
   color: var(--color-text-secondary);
   line-height: 1.75;
   margin-bottom: var(--space-2xl);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .contact-actions {
@@ -1355,7 +1355,7 @@ h1, h2, h3, h4 {
   font-size: 0.9375rem;
   color: rgba(240, 246, 255, 0.75);
   margin-bottom: var(--space-sm);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .footer-status {
