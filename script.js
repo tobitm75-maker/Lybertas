@@ -1,8 +1,53 @@
 /**
  * LYBERTAS – script.js
- * Interaktivität: Navigation, Formularvalidierung, Animationen
+ * Interaktivität: Navigation, Animationen, Wahl-Countdown, Ratsverteilung
  * Kein Framework, kein Build-Prozess – reines Vanilla JS
  */
+
+/* ============================================================
+   0. ZENTRALE DATEN
+============================================================ */
+
+/**
+ * Anstehende Wahlen – Single Source of Truth.
+ * Neue Wahlen einfach ergänzen; die nächstliegende zukünftige wird
+ * automatisch für den Countdown gewählt. Niemals Tageszahl hardcoden.
+ */
+const upcomingElections = [
+  { id: 'seniorenvertretung-koeln-2026', name: 'Wahl der Seniorenvertretung Köln', date: '2026-11-23' }
+];
+
+/**
+ * Sitzverteilung im Rat der Stadt Köln (Kompaktansicht).
+ * Wiederverwendbar gedacht (später weitere Städte). Farben 1:1 zu den
+ * --council-* CSS-Tokens. Prozentwerte werden aus seats/totalSeats berechnet.
+ * Quelle: Stadt Köln, Sitzplan Rat, Stand April 2026.
+ */
+const councilSeatDistributionCologne = {
+  cityId: 'koeln',
+  title: 'Rat Köln',
+  totalSeats: 90,
+  segments: [
+    { id: 'gruene', label: 'GRÜNE',     seats: 22, status: 'Fraktion', color: '#64A12D', email: 'gruene-fraktion@stadt-koeln.de' },
+    { id: 'cdu',    label: 'CDU',       seats: 18, status: 'Fraktion', color: '#111827', email: 'cdu-fraktion@stadt-koeln.de' },
+    { id: 'spd',    label: 'SPD',       seats: 18, status: 'Fraktion', color: '#E3000F', email: 'spd-fraktion@stadt-koeln.de' },
+    { id: 'linke',  label: 'DIE LINKE', seats: 10, status: 'Fraktion', color: '#BE3075', email: 'dielinke@stadt-koeln.de' },
+    { id: 'afd',    label: 'AfD',       seats: 8,  status: 'Fraktion', color: '#009EE0', email: 'afd-fraktion@stadt-koeln.de' },
+    { id: 'volt',   label: 'Volt',      seats: 5,  status: 'Fraktion', color: '#502379', email: 'volt@stadt-koeln.de' },
+    {
+      id: 'weitere', label: 'Weitere', seats: 9, status: 'Zusammenfassung kleinerer Akteure',
+      color: '#9CA3AF', isGroup: true,
+      members: [
+        { id: 'fdp',    label: 'FDP',                 seats: 3, status: 'Teil der Fraktion FDP/KSG', email: 'fdp-fraktion@stadt-koeln.de' },
+        { id: 'ksg',    label: 'KSG',                 seats: 1, status: 'Teil der Fraktion FDP/KSG', email: 'fdp-fraktion@stadt-koeln.de' },
+        { id: 'bsw',    label: 'BSW',                 seats: 2, status: 'Ratsgruppe',                email: 'bsw-ratsgruppe@stadt-koeln.de' },
+        { id: 'partei', label: 'Die PARTEI',          seats: 2, status: 'Ratsgruppe',                email: 'diepartei@stadt-koeln.de' },
+        { id: 'gkf',    label: 'GUT & KLIMA FREUNDE', seats: 1, status: 'Einzelmandat',              email: 'vorstand@gut-klimafreunde.koeln' }
+      ]
+    }
+  ]
+};
+
 
 /* ============================================================
    1. DOMContentLoaded – Initialisierung
@@ -10,11 +55,11 @@
 document.addEventListener('DOMContentLoaded', function () {
   initNav();
   initSmoothScroll();
-  initSurveyForm();
   initScrollAnimations();
   initScrollHeader();
+  initElectionCountdown();
+  initCouncilChart();
   setFooterYear();
-  setTimestamp();
 });
 
 
@@ -95,195 +140,175 @@ function initScrollHeader() {
 
 
 /* ============================================================
-   5. SURVEY FORM – Validierung & Submit
+   4b. WAHL-COUNTDOWN
+   Berechnet Tage bis zur nächsten Wahl live (nie hardcodiert).
+   Das Datum steht bereits als echter Text/<time> im HTML (SEO);
+   JS ersetzt nur die live Tageszahl.
 ============================================================ */
-function initSurveyForm() {
-  const form        = document.getElementById('surveyForm');
-  const successEl   = document.getElementById('surveySuccess');
-  const submitBtn   = document.getElementById('submitBtn');
-  if (!form) return;
+function initElectionCountdown() {
+  const daysEl  = document.getElementById('electionCountdownDays');
+  const badgeEl = document.getElementById('electionCountdownBadgeDays');
+  const nameEl  = document.getElementById('electionCountdownName');
+  const dateEl  = document.getElementById('electionCountdownDate');
+  const card    = document.getElementById('wahlCountdown');
+  if (!daysEl || !card) return;
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+  // Heute auf Mitternacht normalisieren (vermeidet Off-by-one durch Uhrzeit)
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-    // Alle Fehler zurücksetzen
-    clearErrors();
+  // Nächstliegende zukünftige Wahl finden
+  const next = upcomingElections
+    .map(function (e) { return { data: e, date: new Date(e.date + 'T00:00:00') }; })
+    .filter(function (e) { return e.date >= today; })
+    .sort(function (a, b) { return a.date - b.date; })[0];
 
-    let isValid = true;
-
-    // --- Validierung: Antwort ausgewählt ---
-    const selectedVote = form.querySelector('input[name="vote"]:checked');
-    if (!selectedVote) {
-      showError('voteError');
-      isValid = false;
-    }
-
-    // --- Validierung: E-Mail ---
-    const emailInput = document.getElementById('emailField');
-    if (!emailInput.value.trim() || !isValidEmail(emailInput.value.trim())) {
-      showError('emailError');
-      emailInput.classList.add('is-invalid');
-      isValid = false;
-    }
-
-    // --- Validierung: Datenschutz-Checkbox ---
-    const consentCheckbox = document.getElementById('consentField');
-    if (!consentCheckbox.checked) {
-      showError('consentError');
-      isValid = false;
-    }
-
-    if (!isValid) {
-      // Zum ersten Fehler scrollen
-      const firstError = form.querySelector('[role="alert"]:not([hidden])');
-      if (firstError) {
-        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-      return;
-    }
-
-    // --- Timestamp setzen ---
-    setTimestamp();
-
-    // --- Formular absenden ---
-    submitBtn.disabled = true;
-    submitBtn.querySelector('.btn-text').hidden = true;
-    submitBtn.querySelector('.btn-loading').hidden = false;
-
-    const formData = new FormData(form);
-
-    fetch(form.action, {
-      method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    })
-    .then(function (response) {
-      if (response.ok) {
-        // Erfolg: Formular ausblenden, Erfolgsmeldung zeigen
-        form.hidden = true;
-        if (successEl) {
-          successEl.hidden = false;
-          successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      } else {
-        // Server-Fehler
-        handleSubmitError(submitBtn);
-      }
-    })
-    .catch(function () {
-      // Netzwerkfehler
-      handleSubmitError(submitBtn);
-    });
-  });
-
-  // Live-Validierung: E-Mail beim Verlassen des Feldes
-  const emailInput = document.getElementById('emailField');
-  if (emailInput) {
-    emailInput.addEventListener('blur', function () {
-      if (this.value.trim() && !isValidEmail(this.value.trim())) {
-        showError('emailError');
-        this.classList.add('is-invalid');
-      } else {
-        hideError('emailError');
-        this.classList.remove('is-invalid');
-      }
-    });
-
-    emailInput.addEventListener('input', function () {
-      if (this.classList.contains('is-invalid') && isValidEmail(this.value.trim())) {
-        hideError('emailError');
-        this.classList.remove('is-invalid');
-      }
-    });
+  if (!next) {
+    // Kein zukünftiger Termin – Badge ausblenden, keine „NaN Tage"
+    const badge = card.querySelector('.election-countdown__badge');
+    if (badge) badge.hidden = true;
+    return;
   }
 
-  // Optionen visuell markieren wenn Radio gewählt
-  form.querySelectorAll('.survey-option input[type="radio"]').forEach(function (radio) {
-    radio.addEventListener('change', function () {
-      // Alle deselektieren
-      form.querySelectorAll('.survey-option').forEach(function (opt) {
-        opt.classList.remove('is-selected');
-      });
-      // Aktive markieren
-      if (this.checked) {
-        this.closest('.survey-option').classList.add('is-selected');
-        hideError('voteError');
-      }
-    });
+  const days = Math.ceil((next.date - today) / 86400000);
+
+  daysEl.textContent = days;
+  if (badgeEl) badgeEl.textContent = days;
+  if (nameEl)  nameEl.textContent = next.data.name;
+  if (dateEl) {
+    dateEl.setAttribute('datetime', next.data.date);
+    dateEl.textContent = formatGermanDate(next.date);
+  }
+}
+
+/**
+ * Formatiert ein Date als deutsches Datum, z. B. „23. November 2026".
+ */
+function formatGermanDate(date) {
+  const months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+    'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+  return date.getDate() + '. ' + months[date.getMonth()] + ' ' + date.getFullYear();
+}
+
+
+/* ============================================================
+   4c. SITZVERTEILUNG RAT KÖLN – interaktiver Donut
+   SVG-Ring ist dekorativ (aria-hidden); Interaktion + A11y laufen
+   über die statische, crawlbare Legende aus echten <button>.
+============================================================ */
+function initCouncilChart() {
+  const svg    = document.querySelector('.council-chart__svg');
+  const legend = document.querySelector('.council-chart__legend');
+  const detail = document.getElementById('councilDetail');
+  if (!svg || !legend || !detail) return;
+
+  const data    = councilSeatDistributionCologne;
+  const total   = data.totalSeats;
+  const R        = 40;
+  const CIRC     = 2 * Math.PI * R;    // ≈ 251.33
+  const GAP      = 1.2;                // kleine Lücke zwischen Segmenten
+  const SVGNS    = 'http://www.w3.org/2000/svg';
+  const defaultDetailHTML = detail.innerHTML;
+
+  // --- Ring aufbauen: ein <circle> pro Segment ---
+  let offset = 0;
+  data.segments.forEach(function (seg) {
+    const len = (seg.seats / total) * CIRC;
+    const circle = document.createElementNS(SVGNS, 'circle');
+    circle.setAttribute('cx', '50');
+    circle.setAttribute('cy', '50');
+    circle.setAttribute('r', String(R));
+    circle.setAttribute('fill', 'none');
+    circle.setAttribute('stroke', seg.color);
+    circle.setAttribute('stroke-width', '14');
+    circle.setAttribute('stroke-dasharray', Math.max(len - GAP, 0.001) + ' ' + (CIRC - Math.max(len - GAP, 0.001)));
+    circle.setAttribute('stroke-dashoffset', String(-offset));
+    circle.setAttribute('transform', 'rotate(-90 50 50)');
+    circle.setAttribute('data-segment-id', seg.id);
+    circle.classList.add('council-chart__seg');
+    svg.appendChild(circle);
+    offset += len;
+  });
+
+  // --- Interaktion über die Legenden-Buttons ---
+  const buttons = Array.prototype.slice.call(legend.querySelectorAll('.council-legend__item'));
+  let activeId = null;
+
+  function clearActive() {
+    buttons.forEach(function (b) { b.classList.remove('is-active'); b.setAttribute('aria-expanded', 'false'); });
+    svg.querySelectorAll('.council-chart__seg').forEach(function (c) { c.classList.remove('is-active'); });
+  }
+
+  function showDefault() {
+    activeId = null;
+    clearActive();
+    detail.innerHTML = defaultDetailHTML;
+  }
+
+  function pct(seats) {
+    return (seats / total * 100).toFixed(1).replace('.', ',');
+  }
+
+  function renderSingle(seg) {
+    detail.innerHTML =
+      '<div class="council-detail__head">' +
+        '<span class="council-detail__swatch" style="background:' + seg.color + '"></span>' +
+        '<h4 class="council-detail__name">' + seg.label + '</h4>' +
+      '</div>' +
+      '<dl class="council-detail__stats">' +
+        '<div><dt>Sitze</dt><dd>' + seg.seats + ' von ' + total + '</dd></div>' +
+        '<div><dt>Anteil</dt><dd>' + pct(seg.seats) + ' %</dd></div>' +
+        '<div><dt>Status</dt><dd>' + seg.status + '</dd></div>' +
+      '</dl>' +
+      '<a class="council-detail__mail" href="mailto:' + seg.email + '">' + seg.email + '</a>';
+  }
+
+  function renderGroup(seg) {
+    let rows = seg.members.map(function (m) {
+      return '<li class="council-detail__member">' +
+        '<span class="council-detail__member-name">' + m.label + '</span>' +
+        '<span class="council-detail__member-seats">' + m.seats + ' Sitz' + (m.seats === 1 ? '' : 'e') + ' · ' + pct(m.seats) + ' %</span>' +
+        '<span class="council-detail__member-status">' + m.status + '</span>' +
+        '<a class="council-detail__member-mail" href="mailto:' + m.email + '">' + m.email + '</a>' +
+      '</li>';
+    }).join('');
+    detail.innerHTML =
+      '<div class="council-detail__head">' +
+        '<span class="council-detail__swatch" style="background:' + seg.color + '"></span>' +
+        '<h4 class="council-detail__name">Weitere Akteure · ' + seg.seats + ' Sitze</h4>' +
+      '</div>' +
+      '<ul class="council-detail__members" role="list">' + rows + '</ul>';
+  }
+
+  function selectSegment(id, button) {
+    if (activeId === id) { showDefault(); return; }
+    activeId = id;
+    clearActive();
+    button.classList.add('is-active');
+    button.setAttribute('aria-expanded', 'true');
+    const seg = svg.querySelector('.council-chart__seg[data-segment-id="' + id + '"]');
+    if (seg) seg.classList.add('is-active');
+
+    const segment = data.segments.filter(function (s) { return s.id === id; })[0];
+    if (!segment) return;
+    if (segment.isGroup) renderGroup(segment); else renderSingle(segment);
+  }
+
+  buttons.forEach(function (button) {
+    const id = button.getAttribute('data-segment-id');
+    button.addEventListener('click', function () { selectSegment(id, button); });
   });
 }
 
 
 /* ============================================================
-   6. HELPER FUNCTIONS
-============================================================ */
-
-/**
- * E-Mail-Validierung (RFC 5322 vereinfacht)
- */
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-/**
- * Fehlermeldung anzeigen
- */
-function showError(errorId) {
-  const el = document.getElementById(errorId);
-  if (el) el.hidden = false;
-}
-
-/**
- * Fehlermeldung ausblenden
- */
-function hideError(errorId) {
-  const el = document.getElementById(errorId);
-  if (el) el.hidden = true;
-}
-
-/**
- * Alle Fehlermeldungen zurücksetzen
- */
-function clearErrors() {
-  document.querySelectorAll('.field-error').forEach(function (el) {
-    el.hidden = true;
-  });
-  document.querySelectorAll('.is-invalid').forEach(function (el) {
-    el.classList.remove('is-invalid');
-  });
-}
-
-/**
- * Submit-Fehler behandeln
- */
-function handleSubmitError(submitBtn) {
-  submitBtn.disabled = false;
-  submitBtn.querySelector('.btn-text').hidden = false;
-  submitBtn.querySelector('.btn-loading').hidden = true;
-
-  // Einfache Fehlermeldung – alternativ könnte man einen Fehler-Toast einblenden
-  alert('Beim Senden ist ein Fehler aufgetreten. Bitte versuche es später erneut oder kontaktiere uns direkt unter kontakt@lybertas.de');
-}
-
-/**
- * Timestamp in verstecktes Feld schreiben
- */
-function setTimestamp() {
-  const tsField = document.getElementById('timestampField');
-  if (tsField) {
-    tsField.value = new Date().toISOString();
-  }
-}
-
-
-/* ============================================================
-   7. SCROLL ANIMATIONS – Intersection Observer
+   5. SCROLL ANIMATIONS – Intersection Observer
    Elemente werden beim Scrollen eingeblendet
 ============================================================ */
 function initScrollAnimations() {
   // Elemente, die animiert werden sollen
   const targets = document.querySelectorAll(
-    '.feature-card, .survey-card, .why-inner, .municipalities-card, .contact-inner, .why-text, .why-visual'
+    '.feature-card, .transparency-card, .why-inner, .municipalities-card, .contact-inner, .why-text, .why-visual'
   );
 
   if (!('IntersectionObserver' in window)) {

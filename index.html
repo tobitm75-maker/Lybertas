@@ -8,7 +8,7 @@
     SEO: Titel und Meta Description
   ============================================================ -->
   <title>Lybertas – Digitale Bürgerbeteiligung für Städte und Kommunen</title>
-  <meta name="description" content="Lybertas ist eine digitale Bürgerbeteiligungsplattform für Städte, Gemeinden und Kommunen. Bürgerinnen und Bürger können lokale Forderungen sichtbar machen und politische Mitgestaltung einfacher erleben." />
+  <meta name="description" content="Lybertas ist eine digitale Bürgerbeteiligungsplattform für Städte, Gemeinden und Kommunen. Pilotprojekt Köln: Sitzverteilung im Rat, anstehende Wahlen und lokale Forderungen transparent an einem Ort – jetzt mitmachen." />
   <meta name="keywords" content="digitale Bürgerbeteiligung, kommunale Beteiligung, Civic Tech, lokale Politik, Bürgerplattform, Städte, Gemeinden, Kommunen, politische Mitgestaltung, Forderungen stellen, Köln, emissionsärmere Innenstadt" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://lybertas.de" />
@@ -17,7 +17,7 @@
     Open Graph / Social Sharing
   ============================================================ -->
   <meta property="og:title" content="Lybertas – Digitale Bürgerbeteiligung für Städte und Kommunen" />
-  <meta property="og:description" content="Lybertas ist eine digitale Bürgerbeteiligungsplattform für Städte, Gemeinden und Kommunen. Bürgerinnen und Bürger können lokale Forderungen sichtbar machen und politische Mitgestaltung einfacher erleben." />
+  <meta property="og:description" content="Digitale Bürgerbeteiligung für Städte und Kommunen. Pilotprojekt Köln: Sitzverteilung im Rat, anstehende Wahlen und lokale Forderungen transparent an einem Ort." />
   <meta property="og:image" content="./assets/banner.png" />
   <meta property="og:url" content="https://lybertas.de" />
   <meta property="og:type" content="website" />
@@ -67,11 +67,44 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Lybertas",
-    "url": "https://lybertas.de",
-    "description": "Digitale Bürgerbeteiligungsplattform für Städte, Gemeinden und Kommunen",
-    "logo": "https://lybertas.de/assets/icon.png"
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://lybertas.de/#organization",
+        "name": "Lybertas",
+        "url": "https://lybertas.de",
+        "description": "Digitale Bürgerbeteiligungsplattform für Städte, Gemeinden und Kommunen",
+        "logo": "https://lybertas.de/assets/icon.png",
+        "email": "mail@Lybertas.de"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://lybertas.de/#website",
+        "url": "https://lybertas.de",
+        "name": "Lybertas",
+        "inLanguage": "de-DE",
+        "publisher": { "@id": "https://lybertas.de/#organization" }
+      },
+      {
+        "@type": "Event",
+        "name": "Wahl der Seniorenvertretung Köln",
+        "startDate": "2026-11-23",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "@type": "Place",
+          "name": "Köln",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Köln",
+            "addressRegion": "Nordrhein-Westfalen",
+            "addressCountry": "DE"
+          }
+        },
+        "description": "Nächste anstehende Wahl im Lybertas-Pilotprojekt Köln Innenstadt.",
+        "organizer": { "@id": "https://lybertas.de/#organization" }
+      }
+    ]
   }
   </script>
 </head>
@@ -97,11 +130,17 @@
 
       <!-- Navigation Links -->
       <ul class="nav-menu" id="navMenu" role="list">
+        <li><a href="#transparenz" class="nav-link">Köln live</a></li>
         <li><a href="#idee" class="nav-link">Idee</a></li>
         <li><a href="#ziel" class="nav-link">Ziel</a></li>
         <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
         <li>
-          <a href="#kontakt" class="btn btn-primary nav-cta">Mitmachen</a>
+          <!-- Web-App Login -->
+          <a href="https://app.lybertas.de/login" class="btn btn-secondary nav-cta nav-cta--login">Anmelden</a>
+        </li>
+        <li>
+          <!-- Web-App Registrierung -->
+          <a href="https://app.lybertas.de/registrieren" class="btn btn-primary nav-cta nav-cta--register">Registrieren</a>
         </li>
       </ul>
     </nav>
@@ -113,16 +152,13 @@
       HERO SECTION
       Banner-Bild: ./assets/banner.png
     ============================================================ -->
-    <section class="hero" id="hero" aria-labelledby="heroHeadline">
+    <section class="hero hero--centered" id="hero" aria-labelledby="heroHeadline">
       <div class="hero__bg" aria-hidden="true">
-        <!-- BANNER: Ersetze ./assets/banner.png mit deiner finalen Banner-Datei -->
-        <img src="./assets/banner.png" alt="" class="hero__banner-img" loading="eager" />
-        <div class="hero__overlay"></div>
-        <!-- Dekorative SVG-Kreisbögen inspiriert vom Logo -->
+        <!-- Dekorative, dezente Kreisbögen (aus dem Logo abgeleitet) auf hellem Grund -->
         <div class="hero__deco" aria-hidden="true">
           <svg class="hero__arc hero__arc--1" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="200" cy="200" r="180" stroke="#2dd4a0" stroke-width="1.5" stroke-dasharray="6 10" opacity="0.25"/>
-            <circle cx="200" cy="200" r="130" stroke="#2563eb" stroke-width="1" opacity="0.15"/>
+            <circle cx="200" cy="200" r="180" stroke="#2dd4a0" stroke-width="1.5" stroke-dasharray="6 10" opacity="0.18"/>
+            <circle cx="200" cy="200" r="130" stroke="#2563eb" stroke-width="1" opacity="0.12"/>
           </svg>
           <div class="hero__dot hero__dot--1"></div>
           <div class="hero__dot hero__dot--2"></div>
@@ -130,25 +166,162 @@
       </div>
 
       <div class="container hero__content">
-        <div class="hero__badge" aria-label="Status">
-          <span class="hero__badge-dot"></span>
-          Civic Tech · Im Aufbau
+        <div class="hero__badge" aria-label="Pilotregion">
+          <span aria-hidden="true">📍</span>
+          Köln Innenstadt · Pilotprojekt 2026
         </div>
         <h1 class="hero__headline" id="heroHeadline">
-          Lokale Politik beginnt
-          <span class="hero__headline-break">vor deiner Haustür.</span>
+          Deine Stimme für Köln.
+          <span class="hero__headline-break">Wirklich gehört.</span>
         </h1>
         <p class="hero__subheadline">
           Lybertas ist eine digitale Bürgerbeteiligungsplattform für Städte, Gemeinden und Kommunen.
-          Wir machen lokale Forderungen sichtbar und schaffen eine neue Verbindung zwischen Bürgerinnen,
-          Bürgern und politischer Entscheidungsebene.
+          Reiche lokale Forderungen ein, unterstütze Anliegen deiner Nachbarschaft und stimme über
+          Themen ab – direkt in deinem Stadtteil.
         </p>
         <div class="hero__actions">
-          <a href="#kontakt" class="btn btn-primary btn-large">
-            <span>Jetzt informiert bleiben</span>
+          <!-- Web-App Registrierung -->
+          <a href="https://app.lybertas.de/registrieren" class="btn btn-primary btn-large">
+            <span>Jetzt mitmachen</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="#idee" class="btn btn-ghost btn-large">Mehr über Lybertas erfahren</a>
+          <a href="#transparenz" class="btn btn-secondary btn-large">Köln live ansehen</a>
+        </div>
+
+        <!-- Trust-Row -->
+        <ul class="hero__trust" role="list" aria-label="Unsere Prinzipien">
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            Transparenz
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            Beteiligung
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            Vertrauen
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+      TRANSPARENZ-DASHBOARD-VORSCHAU
+      Echte Köln-Infos als öffentlicher Teaser (Countdown + Ratsverteilung)
+    ============================================================ -->
+    <section class="transparency-section" id="transparenz" aria-labelledby="transparencyTitle">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">Live aus Köln</div>
+        <h2 class="section-title" id="transparencyTitle">
+          Transparenz, die du sofort siehst.
+        </h2>
+        <p class="section-subtitle">
+          Ein Auszug aus dem, was Bürgerinnen und Bürger im Lybertas-Dashboard für Köln
+          heute schon sehen können – ganz ohne Anmeldung.
+        </p>
+
+        <div class="transparency-grid">
+
+          <!-- Card A: Wahl-Countdown -->
+          <article class="transparency-card transparency-card--countdown" id="wahlCountdown" aria-labelledby="countdownTitle">
+            <h3 class="transparency-card__title" id="countdownTitle">Anstehende Wahl in Köln</h3>
+            <p class="election-countdown__line">
+              Noch <span id="electionCountdownDays" class="election-countdown__days">138</span> Tage bis zur
+              <strong id="electionCountdownName">Wahl der Seniorenvertretung Köln</strong>
+              (<time id="electionCountdownDate" datetime="2026-11-23">23. November 2026</time>).
+            </p>
+            <div class="election-countdown__badge" aria-hidden="true">
+              <span id="electionCountdownBadgeDays">138</span>
+              <span class="election-countdown__badge-unit">Tage</span>
+            </div>
+            <p class="transparency-card__foot">
+              Im Dashboard siehst du alle anstehenden Wahlen – von der Kommunal- bis zur Europawahl.
+            </p>
+          </article>
+
+          <!-- Card B: Sitzverteilung Rat Köln (interaktiver Donut) -->
+          <article class="transparency-card transparency-card--council" id="ratsverteilung" aria-labelledby="councilTitle">
+            <h3 class="transparency-card__title" id="councilTitle">Sitzverteilung im Rat Köln</h3>
+            <p class="transparency-card__subtitle">90 Sitze · Wahlperiode 2025–2030</p>
+
+            <div class="council-chart">
+              <!-- Ring: dekorativ, wird per JS aufgebaut -->
+              <div class="council-chart__ring" aria-hidden="true">
+                <svg class="council-chart__svg" viewBox="0 0 100 100" role="presentation" focusable="false"></svg>
+                <div class="council-chart__center">
+                  <span class="council-chart__center-num">90</span>
+                  <span class="council-chart__center-label">Sitze</span>
+                </div>
+              </div>
+
+              <!-- Legende: echte, klickbare, crawlbare Buttons (statisch für SEO, JS ergänzt Interaktion) -->
+              <ul class="council-chart__legend" role="list" aria-label="Fraktionen im Rat der Stadt Köln">
+                <li>
+                  <button type="button" class="council-legend__item" data-segment-id="gruene" aria-expanded="false" aria-label="GRÜNE, 22 von 90 Sitzen">
+                    <span class="council-legend__swatch" style="background: var(--council-gruene)" aria-hidden="true"></span>
+                    <span class="council-legend__name">GRÜNE</span>
+                    <span class="council-legend__seats">22 Sitze · 24,4 %</span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="council-legend__item" data-segment-id="cdu" aria-expanded="false" aria-label="CDU, 18 von 90 Sitzen">
+                    <span class="council-legend__swatch" style="background: var(--council-cdu)" aria-hidden="true"></span>
+                    <span class="council-legend__name">CDU</span>
+                    <span class="council-legend__seats">18 Sitze · 20,0 %</span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="council-legend__item" data-segment-id="spd" aria-expanded="false" aria-label="SPD, 18 von 90 Sitzen">
+                    <span class="council-legend__swatch" style="background: var(--council-spd)" aria-hidden="true"></span>
+                    <span class="council-legend__name">SPD</span>
+                    <span class="council-legend__seats">18 Sitze · 20,0 %</span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="council-legend__item" data-segment-id="linke" aria-expanded="false" aria-label="DIE LINKE, 10 von 90 Sitzen">
+                    <span class="council-legend__swatch" style="background: var(--council-linke)" aria-hidden="true"></span>
+                    <span class="council-legend__name">DIE LINKE</span>
+                    <span class="council-legend__seats">10 Sitze · 11,1 %</span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="council-legend__item" data-segment-id="afd" aria-expanded="false" aria-label="AfD, 8 von 90 Sitzen">
+                    <span class="council-legend__swatch" style="background: var(--council-afd)" aria-hidden="true"></span>
+                    <span class="council-legend__name">AfD</span>
+                    <span class="council-legend__seats">8 Sitze · 8,9 %</span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="council-legend__item" data-segment-id="volt" aria-expanded="false" aria-label="Volt, 5 von 90 Sitzen">
+                    <span class="council-legend__swatch" style="background: var(--council-volt)" aria-hidden="true"></span>
+                    <span class="council-legend__name">Volt</span>
+                    <span class="council-legend__seats">5 Sitze · 5,6 %</span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="council-legend__item" data-segment-id="weitere" aria-expanded="false" aria-label="Weitere Akteure, 9 von 90 Sitzen, klicken für Aufschlüsselung">
+                    <span class="council-legend__swatch" style="background: var(--council-weitere)" aria-hidden="true"></span>
+                    <span class="council-legend__name">Weitere</span>
+                    <span class="council-legend__seats">9 Sitze · 10,0 %</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Detailpanel -->
+            <div class="council-chart__detail" id="councilDetail" aria-live="polite">
+              <p class="council-chart__detail-hint">Wähle eine Fraktion für Details.</p>
+            </div>
+
+            <p class="transparency-card__source">Quelle: Stadt Köln, Sitzplan Rat, Stand April 2026</p>
+          </article>
+
+        </div>
+
+        <div class="transparency-cta">
+          <p>Willst du dich beteiligen? <a href="https://app.lybertas.de/registrieren" class="btn btn-primary">Dann hier anmelden</a></p>
         </div>
       </div>
     </section>
@@ -167,7 +340,7 @@
         <div class="features-grid" role="list">
 
           <article class="feature-card" role="listitem">
-            <div class="feature-card__icon" aria-hidden="true">
+            <div class="feature-card__icon feature-card__icon--orange" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
             </div>
             <h3 class="feature-card__title">Forderungen sichtbar machen</h3>
@@ -177,7 +350,7 @@
           </article>
 
           <article class="feature-card" role="listitem">
-            <div class="feature-card__icon" aria-hidden="true">
+            <div class="feature-card__icon feature-card__icon--blue" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
             </div>
             <h3 class="feature-card__title">Kommunen besser verstehen</h3>
@@ -188,7 +361,7 @@
           </article>
 
           <article class="feature-card" role="listitem">
-            <div class="feature-card__icon" aria-hidden="true">
+            <div class="feature-card__icon feature-card__icon--green" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
             </div>
             <h3 class="feature-card__title">Beteiligung einfacher machen</h3>
@@ -266,25 +439,28 @@
     </section>
 
     <!-- ============================================================
-      KONTAKT / EARLY ACCESS SECTION
+      KONTAKT SECTION
     ============================================================ -->
     <section class="contact-section" id="kontakt" aria-labelledby="contactTitle">
       <div class="container">
         <div class="contact-inner">
-          <div class="section-label" aria-hidden="true">Early Access</div>
+          <div class="section-label" aria-hidden="true">Kontakt</div>
           <h2 class="section-title" id="contactTitle">
-            Du möchtest Lybertas testen<br />oder Feedback geben?
+            Fragen, Feedback<br />oder Presseanfragen?
           </h2>
           <p class="contact-text">
-            Wir befinden uns aktuell im Aufbau und testen erste Beteiligungsformate.
-            Wenn du informiert werden möchtest oder Feedback geben willst, trag dich ein
-            oder nimm Kontakt auf.
+            Du möchtest mitmachen? Dann registriere dich direkt in der Web-App. Für alles andere –
+            Fragen, Feedback, Kooperationen oder Presse – erreichst du uns jederzeit per E-Mail.
           </p>
           <div class="contact-actions">
-            <!-- KONTAKT E-MAIL: Ersetze kontakt@lybertas.de mit deiner echten E-Mail -->
-            <a href="mailto:kontakt@lybertas.de" class="btn btn-primary btn-large">
+            <!-- Primäre Aktion: Web-App Registrierung -->
+            <a href="https://app.lybertas.de/registrieren" class="btn btn-primary btn-large">
+              <span>Jetzt mitmachen</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="mailto:mail@Lybertas.de" class="btn btn-secondary btn-large">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <span>Kontakt aufnehmen</span>
+              <span>mail@Lybertas.de</span>
             </a>
           </div>
         </div>
@@ -302,8 +478,8 @@
 
         <!-- Logo + Claim -->
         <div class="footer-brand">
-          <!-- LOGO im Footer: Vollständiges Lybertas-Logo -->
-          <img src="./assets/icon.png" alt="Lybertas" class="footer-logo" loading="lazy" />
+          <!-- LOGO im Footer: Vollständiges Lybertas-Lockup (dunkler Hintergrund passt zum Navy-Footer) -->
+          <img src="./assets/logo.png" alt="Lybertas – Civic Participation Platform" class="footer-logo" loading="lazy" />
           <p class="footer-claim">Digitale Bürgerbeteiligung für Städte, Gemeinden und Kommunen.</p>
           <p class="footer-status">Lybertas befindet sich derzeit im Aufbau.</p>
         </div>
@@ -313,14 +489,14 @@
           <ul role="list">
             <!-- ============================================================
               IMPRESSUM & DATENSCHUTZ:
-              WICHTIG: Vor der Veröffentlichung müssen hier funktionierende
-              Links zu einer vollständigen Impressumseite und einer
-              DSGVO-konformen Datenschutzerklärung eingebunden werden.
-              Impressum ist in Deutschland rechtlich verpflichtend!
+              TODO (vor Live-Gang, rechtlich Pflicht in DE): eigene
+              Impressum- und Datenschutz-Seite anlegen und hier verlinken.
+              Bis dahin bewusst als „in Vorbereitung" markiert statt tote
+              Links auf noch nicht existierende Seiten.
             ============================================================ -->
-            <li><a href="./impressum.html" class="footer-link">Impressum</a></li>
-            <li><a href="./datenschutz.html" class="footer-link">Datenschutz</a></li>
-            <li><a href="mailto:kontakt@lybertas.de" class="footer-link">Kontakt</a></li>
+            <li><span class="footer-link footer-link--pending" aria-disabled="true">Impressum <em>(in Vorbereitung)</em></span></li>
+            <li><span class="footer-link footer-link--pending" aria-disabled="true">Datenschutz <em>(in Vorbereitung)</em></span></li>
+            <li><a href="mailto:mail@Lybertas.de" class="footer-link">Kontakt</a></li>
           </ul>
         </nav>
 
