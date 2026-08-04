@@ -1713,6 +1713,22 @@ h1, h2, h3, h4 {
 .perso-card__hint { font-size: 0.9rem; color: var(--color-text-muted); }
 .perso-card__hint strong { color: var(--color-blue-dark); }
 
+/* ---- Handy-Mockup (Phone-Frame für echte App-Screenshots) ---- */
+.phone {
+  width: min(300px, 78%);
+  margin: 0 auto;
+  background: var(--color-navy);
+  border-radius: 40px;
+  padding: 9px;
+  box-shadow: 0 30px 60px -20px rgba(13, 27, 42, 0.38), 0 8px 24px rgba(13, 27, 42, 0.14);
+}
+.phone__screen {
+  border-radius: 32px;
+  overflow: hidden;
+  background: #fff;
+}
+.phone__img { display: block; width: 100%; height: auto; }
+
 /* ---- Kontakt-Mailzeile ---- */
 .contact-mail { margin-top: var(--space-lg); font-size: 0.95rem; color: var(--color-text-muted); }
 .contact-mail a { color: var(--color-blue-dark); font-weight: 600; }
