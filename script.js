@@ -308,7 +308,7 @@ function initCouncilChart() {
 function initScrollAnimations() {
   // Elemente, die animiert werden sollen
   const targets = document.querySelectorAll(
-    '.feature-card, .transparency-card, .why-inner, .municipalities-card, .contact-inner, .why-text, .why-visual'
+    '.pillar, .feature-row, .func-card, .transparency-card, .perso-card, .contact-inner, .vision-outcome'
   );
 
   if (!('IntersectionObserver' in window)) {
@@ -342,9 +342,9 @@ function initScrollAnimations() {
     observer.observe(el);
   });
 
-  // Gestaffelte Animation für Feature Cards
-  document.querySelectorAll('.feature-card').forEach(function (card, index) {
-    card.style.transitionDelay = (index * 0.1) + 's';
+  // Gestaffelte Animation für Karten (Säulen + Funktions-Grid)
+  document.querySelectorAll('.pillar, .func-card').forEach(function (card, index) {
+    card.style.transitionDelay = ((index % 3) * 0.08) + 's';
   });
 }
 
