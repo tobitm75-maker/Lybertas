@@ -1,16 +1,16 @@
-# Produkt-Screenshots / Mockups
+# Produkt-Screenshots / Mockups (alle als komprimiertes WebP)
 
-Bereits eingebunden (WebP, komprimiert):
+Showcase & Galerie:
 - lybertas-in-aktion.webp → Showcase-Sektion „Lybertas in Aktion"
-- politiker-profil.webp    → Funktionen: Reihe „Politiker & Reaktionen"
-- einblicke-1.webp         → Galerie (Parteiprofil, Politik-Verzeichnis, Forderungen, Karte)
-- einblicke-2.webp         → Galerie (Dashboard & Forderungen, Multi-Device)
+- einblicke-1.webp / einblicke-2.webp → Galerie „Ein Blick in die Plattform"
 
-Noch offen (zeigen bis dahin beschriftete Platzhalter in den Feature-Reihen/Hero):
-- hero-dashboard.png/.webp        → Hero (Produktbild)
-- karte-maengelmelder.png/.webp   → Funktionen: Karte & Mängelmelder
-- umfragen-abstimmungen.png/.webp  → Funktionen: Umfragen & Abstimmungen
-- mitarbeiterplattform.png/.webp   → Funktionen: Mitarbeiterplattform
-- personalisierung.png/.webp       → Für Kommunen: Musterstadt (personalisiert)
+Feature-Reihen & Hero:
+- hero-dashboard.webp       → Hero (Produktbild, Dashboard Köln)
+- karte-maengelmelder.webp  → Funktionen: Karte & Mängelmelder
+- umfragen-abstimmungen.webp → Funktionen: Umfragen & Abstimmungen
+- mitarbeiterplattform.webp → Funktionen: Mitarbeiterplattform
+- politiker-profil.webp     → Funktionen: Politiker & Reaktionen
+- personalisierung.webp     → Für Kommunen: Musterstadt (personalisiert)
 
-Hinweis: Große Screenshots am besten als WebS/WebP (~1400px breit) einbinden – klein & scharf.
+Alle Slots sind belegt. Zum Aktualisieren einfach die jeweilige .webp ersetzen
+(~1400px breit, WebP q≈82). Original-PNGs werden nicht im Repo gehalten.
