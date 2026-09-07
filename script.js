@@ -97,27 +97,82 @@ function initNav() {
 
 
 /* ============================================================
-   3. SMOOTH SCROLL – für ältere Browser (Fallback)
-   (Moderne Browser nutzen CSS scroll-behavior: smooth)
+   3. SMOOTH SCROLL – eigene Animation fuer Anker-Links
+   Das CSS-eigene scroll-behavior: smooth ist bewusst deaktiviert,
+   weil es je nach Browser sehr schnell laeuft und hektisch wirkt.
 ============================================================ */
 function initSmoothScroll() {
+  /* Der Sprung laeuft ueber knapp eine Sekunde mit weichem
+     An- und Auslaufen. */
+  const DAUER_MS = 950;
+
+  const reduziert = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let laufendeAnimation = null;
+
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  function stoppeAnimation() {
+    if (laufendeAnimation !== null) {
+      cancelAnimationFrame(laufendeAnimation);
+      laufendeAnimation = null;
+    }
+  }
+
+  /* Scrollt der Nutzer selbst, hat er Vorrang – sonst wuerde die
+     Animation gegen Mausrad oder Wischgeste arbeiten. */
+  ['wheel', 'touchstart', 'keydown'].forEach(function (typ) {
+    window.addEventListener(typ, stoppeAnimation, { passive: true });
+  });
+
+  function scrolleZu(zielY) {
+    stoppeAnimation();
+
+    const startY = window.scrollY;
+    const strecke = zielY - startY;
+
+    // Bei reduzierter Bewegung ohne Animation springen
+    if (reduziert || Math.abs(strecke) < 4) {
+      window.scrollTo(0, zielY);
+      return;
+    }
+
+    const start = performance.now();
+
+    function schritt(jetzt) {
+      // Fortschritt hart begrenzen, damit keine Ausreisser entstehen
+      const p = Math.min(Math.max((jetzt - start) / DAUER_MS, 0), 1);
+      window.scrollTo(0, startY + strecke * easeInOutCubic(p));
+      laufendeAnimation = p < 1 ? requestAnimationFrame(schritt) : null;
+    }
+
+    laufendeAnimation = requestAnimationFrame(schritt);
+  }
+
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
       if (targetId === '#') return;
       const target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
-        const headerHeight = parseInt(
-          getComputedStyle(document.documentElement).getPropertyValue('--header-height') || '72',
-          10
-        );
-        const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
-        window.scrollTo({ top: top, behavior: 'smooth' });
-      }
+      if (!target) return;
+
+      e.preventDefault();
+
+      const headerHeight = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue('--header-height') || '72',
+        10
+      );
+      const zielY = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+
+      scrolleZu(Math.max(0, zielY));
+
+      // Adresszeile mitfuehren, ohne den Sprung auszuloesen
+      if (history.replaceState) history.replaceState(null, '', targetId);
     });
   });
 }
+
 
 
 /* ============================================================
