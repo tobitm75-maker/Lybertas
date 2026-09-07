@@ -1329,21 +1329,23 @@ h1, h2, h3, h4 {
   background: var(--color-navy);
   color: var(--color-text-on-dark);
   border-top: 1px solid var(--color-border-subtle);
-  padding: var(--space-3xl) 0 var(--space-xl);
+  padding: var(--space-xl) 0 var(--space-md);
 }
 
 .footer-inner {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-2xl);
-  padding-bottom: var(--space-2xl);
+  gap: var(--space-md);
+  padding-bottom: var(--space-md);
   border-bottom: 1px solid var(--color-border-subtle);
 }
 
+/* Ab Tablet: Claim links, Links rechts – alles in einer flachen Zeile */
 @media (min-width: 640px) {
   .footer-inner {
     grid-template-columns: 1fr auto;
-    align-items: start;
+    align-items: center;
+    gap: var(--space-xl);
   }
 }
 
@@ -1375,9 +1377,24 @@ h1, h2, h3, h4 {
   gap: var(--space-sm);
 }
 
+/* Ab Tablet in eine Zeile legen, damit der Footer flach bleibt */
 @media (min-width: 640px) {
   .footer-nav ul {
-    align-items: flex-end;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-md);
+  }
+
+  /* Etwas kleiner, damit Claim und Links nebeneinander Platz haben */
+  .footer-claim {
+    font-size: 0.875rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .footer-link {
+    font-size: 0.875rem;
   }
 }
 
@@ -1405,7 +1422,7 @@ h1, h2, h3, h4 {
 }
 
 .footer-bottom {
-  padding-top: var(--space-xl);
+  padding-top: var(--space-md);
   font-size: 0.8125rem;
   color: rgba(240, 246, 255, 0.5);
   text-align: center;
