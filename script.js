@@ -308,6 +308,7 @@ function initCouncilChart() {
 function initScrollAnimations() {
   // Elemente, die animiert werden sollen
   const targets = document.querySelectorAll(
+    '.hero__subheadline, .hero__actions, .hero__trust, ' +
     '.pillar, .feature-row, .func-card, .transparency-card, .perso-card, .contact-inner, .vision-outcome'
   );
 
@@ -345,6 +346,13 @@ function initScrollAnimations() {
   // Gestaffelte Animation für Karten (Säulen + Funktions-Grid)
   document.querySelectorAll('.pillar, .func-card').forEach(function (card, index) {
     card.style.transitionDelay = ((index % 3) * 0.08) + 's';
+  });
+
+  // Hero: Text, Button und Merkmale nacheinander einblenden
+  document.querySelectorAll(
+    '.hero__subheadline, .hero__actions, .hero__trust'
+  ).forEach(function (el, index) {
+    el.style.transitionDelay = (index * 0.12) + 's';
   });
 }
 
