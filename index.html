@@ -42,9 +42,9 @@
   <!-- ============================================================
     Fonts: Poppins (Display) + Inter (Body)
   ============================================================ -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Schriften lokal eingebunden – keine Verbindung zu Google -->
+  <link rel="preload" href="./assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="./assets/fonts/fonts.css" />
 
   <!-- ============================================================
     Stylesheet
@@ -63,7 +63,7 @@
         "url": "https://lybertas.de",
         "description": "Lybertas ist eine Beteiligungsplattform, die Stadtverwaltung, Politik und Bürger auf einer Plattform zusammenbringt und demokratische Prozesse in Kommunen stärkt.",
         "logo": "https://lybertas.de/assets/icon.png",
-        "email": "mail@Lybertas.de"
+        "email": "info@lybertas.de"
       },
       {
         "@type": "WebSite",
@@ -590,12 +590,12 @@
             für Ihre Kommune aussehen kann.
           </p>
           <div class="contact-actions">
-            <a href="mailto:mail@Lybertas.de?subject=Demo-Anfrage%20Lybertas" class="btn btn-primary btn-large">
+            <a href="mailto:info@lybertas.de?subject=Demo-Anfrage%20Lybertas" class="btn btn-primary btn-large">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               <span>Demo anfragen</span>
             </a>
           </div>
-          <p class="contact-mail">Oder direkt: <a href="mailto:mail@Lybertas.de">mail@Lybertas.de</a></p>
+          <p class="contact-mail">Oder direkt: <a href="mailto:info@lybertas.de">info@lybertas.de</a></p>
         </div>
       </div>
     </section>
@@ -618,16 +618,11 @@
         <!-- Footer Links -->
         <nav class="footer-nav" aria-label="Footer-Navigation">
           <ul role="list">
-            <!-- ============================================================
-              IMPRESSUM & DATENSCHUTZ:
-              TODO (vor Live-Gang, rechtlich Pflicht in DE): eigene
-              Impressum- und Datenschutz-Seite anlegen und hier verlinken.
-            ============================================================ -->
             <li><a href="#funktionen" class="footer-link">Funktionen</a></li>
             <li><a href="#kontakt" class="footer-link">Demo anfragen</a></li>
-            <li><span class="footer-link footer-link--pending" aria-disabled="true">Impressum <em>(in Vorbereitung)</em></span></li>
-            <li><span class="footer-link footer-link--pending" aria-disabled="true">Datenschutz <em>(in Vorbereitung)</em></span></li>
-            <li><a href="mailto:mail@Lybertas.de" class="footer-link">Kontakt</a></li>
+            <li><a href="./impressum.html" class="footer-link">Impressum</a></li>
+            <li><a href="./datenschutz.html" class="footer-link">Datenschutz</a></li>
+            <li><a href="mailto:info@lybertas.de" class="footer-link">Kontakt</a></li>
           </ul>
         </nav>
 
