@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Über uns – Entwurf | Lybertas</title>
+
+  <!-- Interner Entwurf: nicht verlinkt, nicht fuer Suchmaschinen -->
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="icon" type="image/svg+xml" href="./assets/logo-mark.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+
+  <style>
+    .draft-banner {
+      background: var(--color-navy);
+      color: var(--color-text-on-dark);
+      padding: var(--space-md) 0;
+      font-size: 0.875rem;
+      text-align: center;
+    }
+    .draft-banner a { color: var(--color-accent); text-decoration: underline; }
+    .draft-note {
+      max-width: var(--container-max);
+      margin: var(--space-2xl) auto 0;
+      padding: var(--space-lg);
+      border-left: 3px solid var(--color-accent);
+      background: var(--color-bg-alt);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 0.9375rem;
+      color: var(--color-text-secondary);
+    }
+    @media (min-width: 1024px) { .draft-note { margin-inline: auto; width: calc(100% - 6rem); } }
+  </style>
+</head>
+<body>
+
+  <div class="draft-banner">
+    Entwurf zur Abstimmung – nicht öffentlich verlinkt und nicht auf der Startseite.
+    Zurück zur <a href="./index.html">Startseite</a>.
+  </div>
+
+  <main>
+  <!-- ============================================================
+    ÜBER UNS
+    Bewusst offen formuliert: Wir haben noch keine Referenzkommunen,
+    also wird auch keine behauptet. Vertrauen entsteht hier über
+    Herkunft, Förderung, Haltung und ein klares Angebot an frühe
+    Partner – nicht über erfundene Zahlen.
+  ============================================================ -->
+  <section class="about-section" id="ueber-uns" aria-labelledby="aboutTitle">
+    <div class="container">
+
+      <div class="about-head">
+        <div class="section-label" aria-hidden="true">Über uns</div>
+        <h2 class="section-title" id="aboutTitle">Ein junges Team mit einer großen Vision.</h2>
+      </div>
+
+      <div class="about-grid">
+
+        <div class="about-story">
+          <p class="about-lead">
+            Lybertas ist aus einem studentischen Projekt entstanden und wird heute als
+            Start-up entwickelt. Wir sind noch am Anfang – und sagen das offen. Was wir
+            mitbringen, ist Erfahrung aus dem technischen Aufbau von Start-ups sowie
+            Einblicke in Digitalisierungsprojekte großer Unternehmen. Inspiration holen
+            wir uns bewusst auch aus dem Ausland, wo digitale Beteiligung vielerorts
+            weiter ist als hierzulande.
+          </p>
+
+          <p class="about-text">
+            Unsere Überzeugung: Je mehr gute Beteiligungsformate es gibt, desto stärker
+            wird Demokratie. Deshalb soll Beteiligung nicht von der Größe oder dem Budget
+            einer Kommune abhängen. Wir arbeiten an einer Plattform, auf der sich
+            Bürgerinnen und Bürger unabhängig davon einbringen können, wie klein ihre
+            Gemeinde ist – und die Beteiligung dadurch um ein Vielfaches günstiger macht
+            als bisherige Einzellösungen.
+          </p>
+
+          <p class="about-text">
+            Perspektivisch soll daraus mehr werden als ein Verwaltungswerkzeug: eine
+            Plattform für Zusammenarbeit zwischen Kommunen, Hochschulen, Organisationen,
+            Vereinen, Unternehmen und Bürgerinnen und Bürgern. Auch Projekte, die ganz
+            ohne Verwaltung entstehen, sollen hier zusammenfinden.
+          </p>
+
+          <!-- ============================================================
+            TEAM-FOTO:
+            Hier ein gemeinsames Foto des Gründerteams einsetzen.
+            Empfohlen: 1200 x 800 Pixel, als team.webp unter ./assets/.
+            Solange kein Foto vorliegt, bleibt dieser Block ausgeblendet.
+          ============================================================ -->
+          <!--
+          <figure class="about-team">
+            <img src="./assets/team.webp" alt="Das Gründerteam von Lybertas"
+                 width="1200" height="800" loading="lazy" />
+            <figcaption>Das Gründerteam von Lybertas</figcaption>
+          </figure>
+          -->
+        </div>
+
+        <aside class="about-facts" aria-label="Fakten über Lybertas">
+          <div class="about-fact">
+            <span class="about-fact__label">Förderung</span>
+            <span class="about-fact__value">Pioneer Lab</span>
+            <span class="about-fact__note">Förderprogramm für junge Gründungsteams</span>
+          </div>
+          <div class="about-fact">
+            <span class="about-fact__label">Herkunft</span>
+            <span class="about-fact__value">Studentisches Projekt</span>
+            <span class="about-fact__note">daraus entstand die heutige Plattform</span>
+          </div>
+          <div class="about-fact">
+            <span class="about-fact__label">Entwicklung</span>
+            <span class="about-fact__value">Deutschland</span>
+            <span class="about-fact__note">Entwicklung und Hosting im Inland</span>
+          </div>
+          <div class="about-fact">
+            <span class="about-fact__label">Status</span>
+            <span class="about-fact__value">Im Aufbau</span>
+            <span class="about-fact__note">wir suchen erste Partnerkommunen</span>
+          </div>
+        </aside>
+
+      </div>
+
+      <!-- Was die frühe Phase für Kommunen konkret bedeutet -->
+      <h3 class="about-why">Was das für Ihre Kommune bedeutet</h3>
+
+      <div class="about-benefits" role="list">
+
+        <article class="about-benefit" role="listitem">
+          <div class="about-benefit__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg>
+          </div>
+          <h4>Kurze Wege statt langer Prozesse</h4>
+          <p>
+            Sie sprechen direkt mit den Menschen, die die Plattform bauen. Wünsche und
+            Rückfragen landen nicht in einer Ticketwarteschlange, sondern werden in Tagen
+            statt Quartalen umgesetzt.
+          </p>
+        </article>
+
+        <article class="about-benefit" role="listitem">
+          <div class="about-benefit__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          </div>
+          <h4>Deutlich günstiger als etablierte Anbieter</h4>
+          <p>
+            Schlanke Strukturen und eine gemeinsam genutzte Plattform statt teurer
+            Einzelentwicklung. Gerade kleinere Kommunen können sich Beteiligung damit
+            überhaupt erst leisten.
+          </p>
+        </article>
+
+        <article class="about-benefit" role="listitem">
+          <div class="about-benefit__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h4>Aktuelle Risiken aktiv angehen</h4>
+          <p>
+            Sicherheit, Manipulationsversuche durch Bots und Desinformation sind für
+            Beteiligungsverfahren reale Themen. Wir gehen sie gemeinsam mit Ihnen an,
+            statt sie auszublenden.
+          </p>
+        </article>
+
+        <article class="about-benefit" role="listitem">
+          <div class="about-benefit__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 11-5.8-1.6"/></svg>
+          </div>
+          <h4>Beteiligung, die auch ankommt</h4>
+          <p>
+            Viele Plattformen scheitern nicht an der Technik, sondern daran, dass niemand
+            sie kennt. Wir entwickeln die Ansprache der Bürgerinnen und Bürger mit –
+            gemeinsam mit lokalen Partnern vor Ort.
+          </p>
+        </article>
+
+      </div>
+
+      <!-- Ehrliches Angebot an frühe Partner -->
+      <div class="about-invite">
+        <p class="about-invite__text">
+          <strong>Wir suchen Kommunen, die den Weg mit uns gehen.</strong>
+          Partner, mit denen wir gemeinsam lernen, Neues ausprobieren und die Plattform
+          an echten Anforderungen schärfen – zu Konditionen, die eine frühe
+          Zusammenarbeit widerspiegeln.
+        </p>
+        <a href="#kontakt" class="btn btn-primary btn-large">
+          <span>Gespräch vereinbaren</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+    <div class="draft-note">
+      <strong>Noch zu klären:</strong> Die Texte sind mein Entwurf auf Basis unseres Gesprächs
+      und ersetzen nicht eure eigene Formulierung. Zu prüfen sind insbesondere die genaue
+      Schreibweise und Nennbarkeit von „Pioneer Lab“, die Aussage zu den Kosten gegenüber
+      etablierten Anbietern sowie die Frage, ob dieser Inhalt als eigene Seite
+      (<code>/ueber-uns</code>) statt als Abschnitt der Startseite laufen soll.
+      Für ein Foto des Gründerteams ist im Code bereits ein Platz vorbereitet.
+    </div>
+  </main>
+
+</body>
+</html>
