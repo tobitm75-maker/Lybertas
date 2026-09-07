@@ -61,133 +61,138 @@
 
   <main class="about-page">
 <section class="about-section" id="ueber-uns" aria-labelledby="aboutTitle">
-      <div class="container">
 
-        <div class="about-head">
-          <div class="section-label" aria-hidden="true">Über uns</div>
-          <h1 class="section-title" id="aboutTitle">Ein junges Startup für digitale Beteiligung.</h1>
-        </div>
+      <!-- ---------- Einstieg ---------- -->
+      <div class="container about-intro">
+        <div class="section-label" aria-hidden="true">Über uns</div>
+        <h1 class="about-intro__title" id="aboutTitle">
+          Ein junges Startup für <em>digitale Beteiligung</em>.
+        </h1>
+        <p class="about-intro__lead">
+          Wir stehen noch ziemlich am Anfang unserer Reise – und sagen das offen.
+          Was uns antreibt: die Überzeugung, dass digitale Beteiligung einfach,
+          zugänglich und nachvollziehbar sein sollte.
+        </p>
+      </div>
 
-        <div class="about-grid">
-
-          <div class="about-story">
-            <p class="about-lead">
-              Entstanden aus einer studentischen Initiative an der Hochschule Fresenius und
-              weiterentwickelt im Rahmen des PioneerLab-Förderprogramms, entwickeln wir
-              digitale Plattformen, die Menschen, Kommunen und politische Akteure einfacher
-              miteinander verbinden.
-            </p>
-
-            <p class="about-text">
-              Gegründet von Marco Müller und Tobias Mittmann, verbinden wir technische
-              Entwicklung mit wirtschaftlichem Denken und der Überzeugung, dass digitale
-              Beteiligung einfach, zugänglich und nachvollziehbar sein sollte.
-            </p>
-
-            <!-- ============================================================
-              TEAM-FOTO:
-              Hier ein gemeinsames Foto des Gründerteams einsetzen.
-              Empfohlen: 1200 x 800 Pixel, als team.webp unter ./assets/.
-              Solange kein Foto vorliegt, bleibt dieser Block ausgeblendet.
-            ============================================================ -->
-            <!--
-            <figure class="about-team">
-              <img src="./assets/team.webp" alt="Marco Müller und Tobias Mittmann, das Gründerteam von Lybertas"
-                   width="1200" height="800" loading="lazy" />
-              <figcaption>Marco Müller und Tobias Mittmann</figcaption>
-            </figure>
-            -->
-          </div>
-
-          <aside class="about-facts" aria-label="Fakten über Lybertas">
-            <div class="about-fact">
-              <span class="about-fact__label">Herkunft</span>
-              <span class="about-fact__value">Hochschule Fresenius</span>
-              <span class="about-fact__note">aus einer studentischen Initiative entstanden</span>
-            </div>
-            <div class="about-fact">
-              <span class="about-fact__label">Förderung</span>
-              <span class="about-fact__value">PioneerLab</span>
-              <span class="about-fact__note">Förderprogramm für junge Gründungsteams</span>
-            </div>
-            <div class="about-fact">
-              <span class="about-fact__label">Gründerteam</span>
-              <span class="about-fact__value">Müller &amp; Mittmann</span>
-              <span class="about-fact__note">Technik und wirtschaftliches Denken</span>
-            </div>
-            <div class="about-fact">
-              <span class="about-fact__label">Entwicklung</span>
-              <span class="about-fact__value">Deutschland</span>
-              <span class="about-fact__note">Entwicklung und Hosting im Inland</span>
-            </div>
-          </aside>
-
-        </div>
-
-        <!-- ============================================================
-          UNSERE VISION
-        ============================================================ -->
-        <div class="about-vision">
-          <div class="section-label" aria-hidden="true">Unsere Vision</div>
-          <h2 class="about-vision__title">Eine gemeinsame digitale Infrastruktur für Beteiligung.</h2>
-
-          <div class="about-vision__body">
-            <p class="about-text">
-              Heute entwickeln wir Lybertas individuell für Städte und Kommunen. Langfristig
-              möchten wir daraus ein Netzwerk schaffen, das möglichst viele Kommunen
-              unabhängig von ihrer Größe kostengünstig nutzen können.
-            </p>
-
-            <p class="about-text">
-              Bürgerinnen und Bürger sollen sich sicher anmelden, ihre Stadt auswählen und an
-              einem Ort finden, was vor Ort relevant ist: aktuelle Themen,
-              Beteiligungsmöglichkeiten und die richtigen politischen Ansprechpartner. Sie
-              können eigene Anliegen und Ideen einbringen, andere Perspektiven unterstützen
-              oder ergänzen und nachvollziehen, was daraus entsteht.
-            </p>
-          </div>
-
-          <!-- Das Unterscheidungsmerkmal bewusst hervorgehoben -->
-          <blockquote class="about-principle">
-            <p>
-              Dabei wollen wir bewusst <strong>ohne personalisierte Empfehlungsalgorithmen</strong>
-              arbeiten. Nicht das Lauteste oder Emotionalste soll bestimmen, was Menschen sehen,
-              sondern das, was in ihrer Stadt tatsächlich passiert.
-            </p>
-          </blockquote>
-
-          <p class="about-text about-vision__close">
-            So entsteht langfristig nicht nur Beteiligung innerhalb einzelner Kommunen,
-            sondern ein Netzwerk, in dem Städte und Menschen voneinander lernen können –
-            damit gute Ideen nicht an Stadtgrenzen enden.
+      <!-- ---------- Herkunft und Team ---------- -->
+      <div class="container about-story">
+        <div class="about-story__col">
+          <h2 class="about-h2">Woher wir kommen</h2>
+          <p>
+            Entstanden ist Lybertas aus einer studentischen Initiative an der
+            <strong>Hochschule Fresenius</strong>. Was dort als Projekt begann, hat sich im
+            Rahmen des <strong>PioneerLab-Förderprogramms</strong> zu einer Plattform
+            weiterentwickelt, die Menschen, Kommunen und politische Akteure einfacher
+            miteinander verbindet.
+          </p>
+          <p>
+            Aus dem Hochschulkontext ist damit ein Produkt geworden, das wir heute
+            gemeinsam mit Städten und Gemeinden weiterentwickeln.
           </p>
         </div>
 
-        <!-- ============================================================
-          WAS DIE FRUEHE PHASE FUER KOMMUNEN BEDEUTET
-          Diese vier Punkte und die Einladung darunter sind aus dem
-          Gespraech abgeleitet, nicht aus dem gelieferten Text. Bei Bedarf
-          ersatzlos entfernbar.
-        ============================================================ -->
-        <h2 class="about-why">Was das für Ihre Kommune bedeutet</h2>
+        <div class="about-story__col">
+          <h2 class="about-h2">Wer dahintersteht</h2>
+          <p>
+            Gegründet von <strong>Marco Müller</strong> und <strong>Tobias Mittmann</strong>.
+            Wir bringen mehrere Jahre Erfahrung aus der Arbeit in größeren Unternehmen mit –
+            aus Digitalisierungsprojekten, in denen sich zeigt, was in der Praxis trägt und
+            was an starren Strukturen scheitert.
+          </p>
+          <p>
+            Diese Perspektive verbinden wir mit technischer Entwicklung und
+            wirtschaftlichem Denken. Beides fließt direkt in die Plattform ein, weil wir
+            sie selbst bauen.
+          </p>
+
+          <!-- ============================================================
+            TEAM-FOTO:
+            Foto des Gründerteams als team.webp unter ./assets/ ablegen,
+            empfohlen 1200 x 800 Pixel, dann diesen Block aktivieren.
+          ============================================================ -->
+          <!--
+          <figure class="about-team">
+            <img src="./assets/team.webp" alt="Marco Müller und Tobias Mittmann, das Gründerteam von Lybertas"
+                 width="1200" height="800" loading="lazy" />
+            <figcaption>Marco Müller und Tobias Mittmann</figcaption>
+          </figure>
+          -->
+        </div>
+      </div>
+
+      <!-- ---------- Förderung ---------- -->
+      <div class="container about-funding">
+        <img src="./assets/pioneerlab-logo.webp" alt="PioneerLab"
+             width="640" height="236" loading="lazy" />
+      </div>
+
+      <!-- ---------- Vision ---------- -->
+      <div class="about-vision-band">
+        <div class="container">
+          <div class="section-label" aria-hidden="true">Unsere Vision</div>
+          <h2 class="about-vision__title">
+            Eine gemeinsame digitale Infrastruktur für Beteiligung.
+          </h2>
+
+          <div class="about-vision__grid">
+            <div>
+              <p>
+                Heute entwickeln wir Lybertas individuell für Städte und Kommunen.
+                Langfristig möchten wir daraus ein Netzwerk schaffen, das möglichst viele
+                Kommunen unabhängig von ihrer Größe kostengünstig nutzen können.
+              </p>
+              <p>
+                So entsteht nicht nur Beteiligung innerhalb einzelner Kommunen, sondern ein
+                Netzwerk, in dem Städte und Menschen voneinander lernen können – damit gute
+                Ideen nicht an Stadtgrenzen enden.
+              </p>
+            </div>
+            <div>
+              <p>
+                Bürgerinnen und Bürger sollen sich sicher anmelden, ihre Stadt auswählen und
+                an einem Ort finden, was vor Ort relevant ist: aktuelle Themen,
+                Beteiligungsmöglichkeiten und die richtigen politischen Ansprechpartner.
+              </p>
+              <p>
+                Sie können eigene Anliegen und Ideen einbringen, andere Perspektiven
+                unterstützen oder ergänzen und nachvollziehen, was daraus entsteht.
+              </p>
+            </div>
+          </div>
+
+          <!-- Das Unterscheidungsmerkmal bewusst gross gesetzt -->
+          <blockquote class="about-principle">
+            <p>
+              Dabei arbeiten wir bewusst <em>ohne personalisierte Empfehlungsalgorithmen</em>.
+              Nicht das Lauteste oder Emotionalste soll bestimmen, was Menschen sehen,
+              sondern das, was in ihrer Stadt tatsächlich passiert.
+            </p>
+          </blockquote>
+        </div>
+      </div>
+
+      <!-- ---------- Was die fruehe Phase bedeutet ---------- -->
+      <div class="container about-benefits-wrap">
+        <h2 class="about-h2 about-h2--center">Was das für Ihre Kommune bedeutet</h2>
 
         <div class="about-benefits" role="list">
 
           <article class="about-benefit" role="listitem">
             <div class="about-benefit__icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg>
             </div>
             <h3>Kurze Wege statt langer Prozesse</h3>
             <p>
               Sie sprechen direkt mit den Menschen, die die Plattform bauen. Wünsche und
-              Rückfragen landen nicht in einer Ticketwarteschlange, sondern werden in Tagen
-              statt Quartalen umgesetzt.
+              Rückfragen landen nicht in einer Warteschlange, sondern werden in Tagen statt
+              Quartalen umgesetzt.
             </p>
           </article>
 
           <article class="about-benefit" role="listitem">
             <div class="about-benefit__icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
             </div>
             <h3>Bezahlbar auch für kleine Kommunen</h3>
             <p>
@@ -199,7 +204,7 @@
 
           <article class="about-benefit" role="listitem">
             <div class="about-benefit__icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
             </div>
             <h3>Aktuelle Risiken aktiv angehen</h3>
             <p>
@@ -211,7 +216,7 @@
 
           <article class="about-benefit" role="listitem">
             <div class="about-benefit__icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 11-5.8-1.6"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 11-5.8-1.6"/></svg>
             </div>
             <h3>Beteiligung, die auch ankommt</h3>
             <p>
@@ -222,21 +227,27 @@
           </article>
 
         </div>
+      </div>
 
+      <!-- ---------- Einladung ---------- -->
+      <div class="container">
         <div class="about-invite">
-          <p class="about-invite__text">
-            <strong>Wir suchen Kommunen, die den Weg mit uns gehen.</strong>
-            Partner, mit denen wir gemeinsam lernen, Neues ausprobieren und die Plattform
-            an echten Anforderungen schärfen – zu Konditionen, die eine frühe
-            Zusammenarbeit widerspiegeln.
-          </p>
+          <div class="about-invite__text">
+            <h2>Wir suchen Kommunen, die mit uns wachsen wollen.</h2>
+            <p>
+              Städte und Gemeinden, die jung im Denken sind, am Zahn der Zeit bleiben
+              möchten und Lust haben, etwas Neues auszuprobieren. Die sich einen Partner
+              wünschen, der schnell reagiert und mitwächst – statt einen Anbieter, der
+              Prozesse verwaltet.
+            </p>
+          </div>
           <a href="./index.html#kontakt" class="btn btn-primary btn-large">
             <span>Gespräch vereinbaren</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
-
       </div>
+
     </section>
   </main>
 

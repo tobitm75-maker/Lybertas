@@ -2097,219 +2097,6 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================================
-   18. ÜBER UNS
-   Ruhig und faktisch gehalten: Die Glaubwuerdigkeit entsteht aus
-   Offenheit ueber den fruehen Stand, nicht aus grossen Zahlen.
-============================================================ */
-.about-section {
-  background: var(--color-bg);
-  padding: var(--space-4xl) 0;
-}
-
-.about-head {
-  max-width: 720px;
-  margin-bottom: var(--space-2xl);
-}
-
-.about-head .section-title {
-  text-align: left;
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-2xl);
-  align-items: start;
-}
-
-@media (min-width: 900px) {
-  .about-grid {
-    grid-template-columns: 1.55fr 1fr;
-    gap: var(--space-3xl);
-  }
-}
-
-.about-lead {
-  font-size: 1.125rem;
-  line-height: 1.7;
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-lg);
-}
-
-.about-text {
-  font-size: 1rem;
-  line-height: 1.75;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-md);
-}
-
-.about-team {
-  margin-top: var(--space-xl);
-}
-
-.about-team img {
-  width: 100%;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
-}
-
-.about-team figcaption {
-  margin-top: var(--space-sm);
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-}
-
-/* ---- Faktenspalte ---- */
-.about-facts {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-md);
-}
-
-@media (min-width: 900px) {
-  .about-facts {
-    grid-template-columns: 1fr;
-  }
-}
-
-.about-fact {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border-subtle);
-  border-left: 3px solid var(--color-blue-dark);
-  border-radius: var(--radius-md);
-  padding: var(--space-md) var(--space-lg);
-  box-shadow: var(--shadow-card);
-}
-
-.about-fact__label {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
-.about-fact__value {
-  font-family: var(--font-display);
-  font-size: 1.0625rem;
-  font-weight: 700;
-  color: var(--color-text-primary);
-}
-
-.about-fact__note {
-  font-size: 0.8125rem;
-  color: var(--color-text-secondary);
-}
-
-/* ---- Vorteile der fruehen Phase ---- */
-.about-why {
-  font-family: var(--font-display);
-  font-size: 1.375rem;
-  font-weight: 700;
-  color: var(--color-text-primary);
-  margin: var(--space-3xl) 0 var(--space-lg);
-}
-
-.about-benefits {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-lg);
-}
-
-@media (min-width: 760px) {
-  .about-benefits { grid-template-columns: repeat(2, 1fr); }
-}
-
-.about-benefit {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  box-shadow: var(--shadow-card);
-}
-
-.about-benefit__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 11px;
-  background: rgba(37, 99, 235, 0.08);
-  color: var(--color-blue-dark);
-  margin-bottom: var(--space-md);
-}
-
-.about-benefit h4 {
-  font-size: 1.0625rem;
-  font-weight: 700;
-  color: var(--color-text-primary);
-  margin-bottom: 0.4rem;
-}
-
-.about-benefit p {
-  font-size: 0.9375rem;
-  line-height: 1.7;
-  color: var(--color-text-secondary);
-}
-
-/* ---- Einladung an fruehe Partner ---- */
-.about-invite {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-lg);
-  margin-top: var(--space-2xl);
-  padding: var(--space-xl);
-  border-radius: var(--radius-lg);
-  background: var(--color-bg-alt);
-  border: 1px solid var(--color-border);
-}
-
-@media (min-width: 860px) {
-  .about-invite {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-2xl);
-  }
-}
-
-.about-invite__text {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--color-text-secondary);
-  max-width: 62ch;
-}
-
-.about-invite__text strong {
-  display: block;
-  font-size: 1.0625rem;
-  color: var(--color-text-primary);
-  margin-bottom: 0.3rem;
-}
-
-.about-invite .btn { flex-shrink: 0; }
-
-/* Hover passend zu den uebrigen Karten */
-@media (hover: hover) and (pointer: fine) {
-  .about-benefit {
-    transition: transform var(--transition-base),
-                box-shadow var(--transition-base),
-                border-color var(--transition-base);
-  }
-
-  .about-benefit:hover {
-    transform: translateY(-4px);
-    border-color: rgba(37, 99, 235, 0.28);
-    box-shadow: 0 16px 34px -12px rgba(13, 27, 42, 0.16);
-  }
-}
-
-/* ============================================================
    19. RECHTSSEITEN (Impressum, Datenschutz)
    Schlichtes Dokumentlayout: schmales Textmass, klare Hierarchie,
    keine Kacheln. Diese Seiten werden gelesen, nicht ueberflogen.
@@ -2655,49 +2442,278 @@ body:has(.hero--video) .site-header.scrolled .nav-cta--about {
   padding-top: var(--header-height);
 }
 
-/* ---- Über uns: Visionsteil ---- */
-.about-vision {
-  margin-top: var(--space-3xl);
-  padding-top: var(--space-2xl);
+/* ============================================================
+   22. ÜBER-UNS-SEITE
+   Deutlich groessere Schriftgrade als im uebrigen Fliesstext: Diese
+   Seite wird gelesen, nicht ueberflogen. Einspaltiger Einstieg,
+   danach zweispaltige Abschnitte, dazwischen ein farbiges Band fuer
+   die Vision – so entsteht Rhythmus statt einer langen Textwand.
+============================================================ */
+.about-page {
+  padding-top: var(--header-height);
+}
+
+.about-section {
+  padding-bottom: var(--space-4xl);
+}
+
+/* ---- Einstieg ---- */
+.about-intro {
+  padding-top: var(--space-4xl);
+  padding-bottom: var(--space-3xl);
+  max-width: 1000px;
+}
+
+.about-intro__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5.2vw, 3.75rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
+  max-width: 18ch;
+  margin-bottom: var(--space-lg);
+}
+
+.about-intro__title em {
+  font-style: normal;
+  color: var(--color-blue-dark);
+}
+
+.about-intro__lead {
+  font-size: clamp(1.1875rem, 2.1vw, 1.5rem);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  max-width: 58ch;
+}
+
+/* ---- Herkunft und Team ---- */
+.about-story {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  padding-bottom: var(--space-3xl);
+}
+
+@media (min-width: 880px) {
+  .about-story { grid-template-columns: 1fr 1fr; gap: var(--space-3xl); }
+}
+
+.about-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.375rem, 2.4vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.about-h2--center {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.about-story p,
+.about-vision-band p {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+  max-width: 60ch;
+}
+
+.about-story strong,
+.about-vision-band strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.about-team { margin-top: var(--space-lg); }
+
+.about-team img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.about-team figcaption {
+  margin-top: var(--space-sm);
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+}
+
+/* ---- Förderung: nur das Logo, ohne Beschriftung ---- */
+.about-funding {
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: var(--space-3xl);
+}
+
+.about-funding img {
+  height: 46px;
+  width: auto;
+  opacity: 0.75;
+  transition: opacity var(--transition-base);
+}
+
+.about-funding img:hover { opacity: 1; }
+
+/* ---- Vision: farbiges Band als Zaesur ---- */
+.about-vision-band {
+  background: var(--color-bg-alt);
   border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding: var(--space-4xl) 0;
+  margin-bottom: var(--space-4xl);
 }
 
 .about-vision__title {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2.125rem);
+  font-size: clamp(1.75rem, 3.6vw, 2.75rem);
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
   color: var(--color-text-primary);
-  max-width: 24ch;
-  margin-bottom: var(--space-lg);
+  max-width: 22ch;
+  margin-bottom: var(--space-xl);
 }
 
-.about-vision__body { max-width: 68ch; }
-
-.about-vision__close {
-  max-width: 68ch;
-  margin-top: var(--space-lg);
+.about-vision__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
 }
 
-/* Der bewusste Verzicht auf Empfehlungsalgorithmen ist das
-   Unterscheidungsmerkmal – deshalb hervorgehoben statt im Fliesstext. */
+@media (min-width: 880px) {
+  .about-vision__grid { grid-template-columns: 1fr 1fr; gap: var(--space-2xl); }
+}
+
+/* Der Verzicht auf Empfehlungsalgorithmen ist das
+   Unterscheidungsmerkmal – deshalb gross und freistehend. */
 .about-principle {
-  margin: var(--space-xl) 0 0;
-  padding: var(--space-lg) var(--space-xl);
-  border-left: 3px solid var(--color-accent);
-  background: var(--color-bg-alt);
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
-  max-width: 68ch;
+  margin: var(--space-2xl) 0 0;
+  padding-left: var(--space-xl);
+  border-left: 4px solid var(--color-accent);
+  max-width: 46ch;
 }
 
 .about-principle p {
-  font-size: 1.0625rem;
-  line-height: 1.75;
-  color: var(--color-text-primary);
-  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.4vw, 1.625rem) !important;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  color: var(--color-text-primary) !important;
+  margin: 0 !important;
+  max-width: none !important;
 }
 
-.about-principle strong {
-  font-weight: 600;
+.about-principle em {
+  font-style: normal;
   color: var(--color-accent-dark);
+}
+
+/* ---- Vorteile ---- */
+.about-benefits-wrap { padding-bottom: var(--space-3xl); }
+
+.about-benefits {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 760px) {
+  .about-benefits { grid-template-columns: repeat(2, 1fr); }
+}
+
+.about-benefit {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-card);
+}
+
+.about-benefit__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--color-blue-dark);
+  margin-bottom: var(--space-md);
+}
+
+.about-benefit h3 {
+  font-family: var(--font-display);
+  font-size: 1.1875rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.about-benefit p {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+/* ---- Einladung ---- */
+.about-invite {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xl);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(37, 99, 235, .10) 0%, transparent 60%),
+    var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+}
+
+@media (min-width: 900px) {
+  .about-invite {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3xl);
+    padding: var(--space-2xl) var(--space-3xl);
+  }
+}
+
+.about-invite h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.375rem, 2.6vw, 1.875rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+  max-width: 24ch;
+}
+
+.about-invite p {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  max-width: 62ch;
+}
+
+.about-invite .btn { flex-shrink: 0; }
+
+/* Hover passend zum uebrigen Kartenverhalten */
+@media (hover: hover) and (pointer: fine) {
+  .about-benefit {
+    transition: transform var(--transition-base),
+                box-shadow var(--transition-base),
+                border-color var(--transition-base);
+  }
+  .about-benefit:hover {
+    transform: translateY(-4px);
+    border-color: rgba(37, 99, 235, 0.28);
+    box-shadow: 0 16px 34px -12px rgba(13, 27, 42, 0.16);
+  }
 }
