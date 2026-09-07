@@ -276,9 +276,14 @@
     ============================================================ -->
     <section class="showcase-section" aria-labelledby="showcaseTitle">
       <div class="container">
-        <!-- Beide Fassungen der Grafik tragen den Titel selbst, der Textblock
-             ist deshalb nur fuer Screenreader da. -->
-        <h2 id="showcaseTitle" class="sr-only">Lybertas in Aktion – so funktioniert digitale Beteiligung in der Praxis</h2>
+        <!-- Ueberschrift: Die Handy-Fassung der Grafik hat keinen eingebauten
+             Titel mehr, dort wird er als echter Text gesetzt. Die
+             Desktop-Grafik traegt ihn weiterhin selbst – deshalb ist der
+             Block dort nur fuer Screenreader vorhanden. -->
+        <div class="showcase-head">
+          <h2 id="showcaseTitle" class="section-title">Lybertas in Aktion</h2>
+          <p class="section-subtitle">So funktioniert digitale Beteiligung in der Praxis</p>
+        </div>
 
         <!-- Auf dem Handy die Hochkant-Fassung: Laptop oben ueber die volle
              Breite, darunter die beiden Handy-Ansichten. So sind die
@@ -286,7 +291,7 @@
         <picture>
           <source media="(max-width: 767px)"
                   srcset="./assets/screenshots/lybertas-in-aktion-mobil.webp"
-                  width="941" height="1990" />
+                  width="1086" height="1756" />
           <img class="mockup" src="./assets/screenshots/lybertas-in-aktion.webp"
                alt="Lybertas in Aktion: Dashboard mit Karte auf dem Laptop sowie Forderung einreichen und Impact-Ansicht auf dem Smartphone"
                width="1400" height="933" loading="lazy" />

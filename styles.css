@@ -1967,6 +1967,20 @@ h1, h2, h3, h4 {
   box-shadow: none;
 }
 
+/* Auf dem Desktop traegt die Grafik den Titel selbst – der Textblock ist
+   dort nur fuer Screenreader da (gleiche Technik wie .sr-only). */
+.showcase-head {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* ---- Handy: Hochkant-Fassung randlos und moeglichst gross ----
    Die Grafik laeuft von Kante zu Kante, weil die seitliche Polsterung
    des Containers die Oberflaechen sonst zu klein macht. Der
@@ -1974,8 +1988,8 @@ h1, h2, h3, h4 {
    keine Naht sichtbar wird. */
 @media (max-width: 767px) {
   .showcase-section {
-    background: #f7fcfe;
-    padding: 0 0 var(--space-lg);
+    background: #fefefe;
+    padding: var(--space-2xl) 0 var(--space-lg);
   }
 
   .showcase-section > .container {
@@ -1987,6 +2001,27 @@ h1, h2, h3, h4 {
     max-width: none;
     width: 100%;
     border-radius: 0;
+  }
+
+  /* Ueberschrift wie in den uebrigen Abschnitten, nur enger gesetzt */
+  .showcase-head {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0 0 var(--space-xl);
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    padding: 0 var(--space-lg);
+    text-align: center;
+  }
+
+  .showcase-head .section-title { margin-bottom: var(--space-sm); }
+
+  .showcase-head .section-subtitle {
+    margin: 0 auto;
+    max-width: 34ch;
+    text-wrap: balance;   /* verhindert ein einzelnes Wort in der 2. Zeile */
   }
 
   /* Der folgende Abschnitt ruecht naeher heran, damit die Grafik nicht
