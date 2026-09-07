@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hero-Vorschau – Lybertas</title>
+
+  <!-- Interne Vorschau: nicht in der Navigation verlinkt, nicht für Suchmaschinen -->
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="icon" type="image/svg+xml" href="./assets/logo-mark.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Design-Tokens und Basis aus der Hauptseite übernehmen -->
+  <link rel="stylesheet" href="./styles.css" />
+
+  <style>
+    /* ============================================================
+       HERO-VORSCHAU
+       Umsetzung der Analyse: echte Produktansicht statt Illustration,
+       ergebnisorientierte Headline, ein CTA, belegbare Vertrauens-
+       signale über der Falz, Bewegung im Produkt statt Dekoration.
+    ============================================================ */
+
+    .vhero {
+      position: relative;
+      overflow: hidden;
+      padding-top: var(--space-3xl);
+      background:
+        radial-gradient(60% 50% at 50% 0%, rgba(37, 99, 235, 0.06) 0%, transparent 70%),
+        var(--color-bg);
+    }
+
+    .vhero__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* ---- Vertrauenssignal als Erstes: konkreter Stand statt Floskel ---- */
+    .vhero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.4rem 1rem 0.4rem 0.75rem;
+      border-radius: var(--radius-full);
+      background: rgba(37, 99, 235, 0.07);
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-blue-dark);
+      margin-bottom: var(--space-lg);
+    }
+
+    .vhero__eyebrow::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+
+    /* ---- Headline: benennt das Ergebnis, nicht die Struktur ---- */
+    .vhero__headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 5.2vw, 3.75rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: var(--color-text-primary);
+      max-width: 18ch;
+    }
+
+    .vhero__headline em {
+      font-style: normal;
+      color: var(--color-blue-dark);
+    }
+
+    .vhero__sub {
+      max-width: 54ch;
+      margin-top: var(--space-lg);
+      font-size: clamp(1rem, 1.6vw, 1.1875rem);
+      line-height: 1.65;
+      color: var(--color-text-secondary);
+    }
+
+    /* ---- Genau ein Button ---- */
+    .vhero__cta {
+      margin-top: var(--space-xl);
+    }
+
+    /* ---- Belegbare Zahlen statt allgemeiner Siegel ---- */
+    .vhero__proof {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-xl);
+      margin-top: var(--space-xl);
+      padding-top: var(--space-lg);
+    }
+
+    .vproof {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 120px;
+    }
+
+    .vproof__value {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .vproof__label {
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* ============================================================
+       PRODUKTANSICHT: echtes Interface, unten angeschnitten
+    ============================================================ */
+    .vshot {
+      position: relative;
+      width: 100%;
+      max-width: 1180px;
+      margin: var(--space-2xl) auto 0;
+      border-radius: 16px 16px 0 0;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--color-border-subtle);
+      border-bottom: none;
+      box-shadow: 0 -2px 0 rgba(255,255,255,.6),
+                  0 40px 80px -30px rgba(13, 27, 42, 0.35),
+                  0 12px 28px rgba(13, 27, 42, 0.10);
+    }
+
+    .vshot__bar {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 11px 16px;
+      background: #f3f6fb;
+      border-bottom: 1px solid #eaeff6;
+    }
+
+    .vshot__dot { width: 10px; height: 10px; border-radius: 50%; background: #cfd8e6; }
+
+    .vshot__url {
+      margin-left: 12px;
+      padding: 3px 14px;
+      background: #fff;
+      border: 1px solid #e6ebf3;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+    }
+
+    .vshot__body { position: relative; }
+
+    .vshot__img { display: block; width: 100%; height: auto; }
+
+    /* ---- Bewegung im Produkt: Statuswechsel und Zaehler ---- */
+    .vshot__live {
+      position: absolute;
+      right: 3%;
+      top: 47%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-end;
+    }
+
+    /* Grundzustand ist sichtbar – die Animation blendet nur ein.
+       Laeuft sie nicht, ist der Inhalt trotzdem da. */
+    .vlive-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: #fff;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 12px;
+      box-shadow: 0 12px 28px -10px rgba(13, 27, 42, 0.22);
+      font-size: 0.8125rem;
+      animation: vliveIn 0.6s ease backwards;
+    }
+
+    .vlive-card--1 { animation-delay: 1.1s; }
+    .vlive-card--2 { animation-delay: 2.2s; }
+
+    @keyframes vliveIn {
+      from { opacity: 0; transform: translateY(8px); }
+    }
+
+    .vstatus {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: rgba(37, 99, 235, 0.10);
+      color: var(--color-blue-dark);
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    /* Statuswechsel: In Pruefung -> Umgesetzt (per Skript gesetzt) */
+    .vstatus.is-done {
+      background: rgba(45, 212, 160, 0.16);
+      color: var(--color-accent-dark);
+    }
+
+    .vcount {
+      font-weight: 700;
+      color: var(--color-text-primary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ============================================================
+       ERLAEUTERUNG UNTER DER VORSCHAU
+    ============================================================ */
+    .vnotes { background: var(--color-bg-alt); padding: var(--space-4xl) 0; }
+
+    .vnotes__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      margin-top: var(--space-2xl);
+    }
+
+    @media (min-width: 860px) {
+      .vnotes__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .vnote {
+      background: #fff;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-card);
+    }
+
+    .vnote__num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--color-blue-dark);
+      color: #fff;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .vnote h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--color-text-primary);
+    }
+
+    .vnote p { font-size: 0.9375rem; color: var(--color-text-secondary); }
+
+    .vnote code {
+      font-size: 0.85em;
+      background: var(--color-bg-alt);
+      padding: 1px 5px;
+      border-radius: 4px;
+      color: var(--color-blue-dark);
+    }
+
+    .vhint {
+      margin-top: var(--space-xl);
+      padding: var(--space-lg);
+      border-left: 3px solid var(--color-accent);
+      background: #fff;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 0.9375rem;
+      color: var(--color-text-secondary);
+    }
+
+    .vbanner {
+      background: var(--color-navy);
+      color: var(--color-text-on-dark);
+      padding: var(--space-md) 0;
+      font-size: 0.875rem;
+      text-align: center;
+    }
+
+    .vbanner a { color: var(--color-accent); text-decoration: underline; }
+
+    /* ---- Mobil: Ausschnitt statt geschrumpfter Gesamtansicht ----
+       Eine komplette Desktop-Oberflaeche auf 400 Pixel Breite ist
+       unlesbar. Deshalb wird hier in den linken Teil hineingezoomt. */
+    @media (max-width: 700px) {
+      .vshot { border-radius: 14px 14px 0 0; }
+
+      .vshot__body {
+        overflow: hidden;
+        max-height: 62vh;
+      }
+
+      .vshot__img {
+        width: 215%;
+        max-width: none;
+      }
+
+      .vshot__live {
+        right: auto;
+        left: 4%;
+        top: auto;
+        bottom: 6%;
+        align-items: flex-start;
+      }
+
+      .vlive-card { font-size: 0.75rem; padding: 8px 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .vlive-card { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="vbanner">
+    Interne Vorschau – nicht öffentlich verlinkt. Zurück zur <a href="./index.html">aktuellen Startseite</a>.
+  </div>
+
+  <!-- ============================================================
+    HERO-VORSCHLAG
+  ============================================================ -->
+  <section class="vhero">
+    <div class="container vhero__inner">
+
+      <!-- Vertrauenssignal ganz oben: konkreter Stand, kein Siegel -->
+      <span class="vhero__eyebrow">Pilotphase · 3 Kommunen · seit 2026</span>
+
+      <h1 class="vhero__headline">
+        Aus Anliegen werden <em>Entscheidungen</em>.
+      </h1>
+
+      <p class="vhero__sub">
+        Lybertas bündelt Meldungen, Umfragen und Abstimmungen in einer Plattform –
+        und macht für alle nachvollziehbar, was daraus geworden ist.
+      </p>
+
+      <div class="vhero__cta">
+        <a href="./index.html#kontakt" class="btn btn-primary btn-large">
+          <span>Demo anfragen</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Belegbare Zahlen statt allgemeiner Siegel -->
+      <div class="vhero__proof">
+        <div class="vproof">
+          <span class="vproof__value" data-count-to="127889">0</span>
+          <span class="vproof__label">erreichte Bürger</span>
+        </div>
+        <div class="vproof">
+          <span class="vproof__value" data-count-to="1482">0</span>
+          <span class="vproof__label">Beteiligungen</span>
+        </div>
+        <div class="vproof">
+          <span class="vproof__value">BITV 2.0</span>
+          <span class="vproof__label">barrierefrei geprüft</span>
+        </div>
+        <div class="vproof">
+          <span class="vproof__value">DE</span>
+          <span class="vproof__label">gehostet in Deutschland</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Echte Produktansicht, unten angeschnitten -->
+    <div class="container">
+      <figure class="vshot">
+        <div class="vshot__bar" aria-hidden="true">
+          <span class="vshot__dot"></span><span class="vshot__dot"></span><span class="vshot__dot"></span>
+          <span class="vshot__url">ihre-kommune.lybertas.de</span>
+        </div>
+        <div class="vshot__body">
+          <img class="vshot__img" src="./assets/screenshots/personalisierung.webp"
+               alt="Lybertas in einer Beispielkommune: Startseite mit aktuellen Beteiligungen, Karte und Unterstützungsständen"
+               width="1400" height="788" loading="eager" />
+
+          <!-- Bewegung im echten Interface statt Deko-Grafik -->
+          <div class="vshot__live" aria-hidden="true">
+            <div class="vlive-card vlive-card--1">
+              <span class="vstatus" id="vstatus">In Prüfung</span>
+              <span>Sicherer Schulweg</span>
+            </div>
+            <div class="vlive-card vlive-card--2">
+              <span class="vcount" data-count-to="248">0</span>
+              <span>neue Unterstützungen</span>
+            </div>
+          </div>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+    ERLAEUTERUNG DER ENTSCHEIDUNGEN
+  ============================================================ -->
+  <section class="vnotes">
+    <div class="container">
+      <div class="section-label">Warum so</div>
+      <h2 class="section-title" style="text-align:left">Die sechs Entscheidungen im Detail</h2>
+
+      <div class="vnotes__grid">
+
+        <article class="vnote">
+          <span class="vnote__num">1</span>
+          <h3>Echte Produktansicht statt Illustration</h3>
+          <p>Der häufigste Fehler ist, das Bild vor der Botschaft zu gestalten. Eine Illustration sagt nichts über das Produkt – ein echter Screenshot beantwortet in zwei Sekunden, was Lybertas ist. Hier eingesetzt: eure vorhandene Kartenansicht.</p>
+        </article>
+
+        <article class="vnote">
+          <span class="vnote__num">2</span>
+          <h3>Headline nennt das Ergebnis</h3>
+          <p>„Verwaltung, Politik und Bürger. Auf einer Plattform" beschreibt eine Struktur. „Aus Anliegen werden Entscheidungen" beschreibt die Veränderung, die eine Kommune kauft. Das ist der Unterschied zwischen beschreibend und mutig.</p>
+        </article>
+
+        <article class="vnote">
+          <span class="vnote__num">3</span>
+          <h3>Belege statt Siegel</h3>
+          <p>Kommunale Einkäufer sind risikoscheu. „DSGVO-konform · Made in Germany · Barrierearm" sind Behauptungen. Zahlen, Pilotstand und eine geprüfte Norm sind Belege – und stehen bewusst direkt unter dem Button.</p>
+        </article>
+
+        <article class="vnote">
+          <span class="vnote__num">4</span>
+          <h3>Bewegung im Produkt, nicht als Deko</h3>
+          <p>Die Zähler laufen hoch, ein Status springt einmal von „In Prüfung" auf „Umgesetzt". Das wirkt innovativ, weil es zeigt, was das Produkt tut – im Gegensatz zu leuchtenden Punkten, die nur schmücken.</p>
+        </article>
+
+        <article class="vnote">
+          <span class="vnote__num">5</span>
+          <h3>Unten angeschnitten</h3>
+          <p>Das Fenster läuft aus dem Bereich heraus statt sauber abzuschließen. Das signalisiert „hier geht es weiter" und zieht zum Scrollen – ein etablierter Kniff, der ohne zusätzliche Elemente auskommt.</p>
+        </article>
+
+        <article class="vnote">
+          <span class="vnote__num">6</span>
+          <h3>Ohne Ortsbezug</h3>
+          <p>Gezeigt wird eine neutrale „Musterstadt" mit eigenem Logo, die Adressleiste zeigt <code>ihre-kommune.lybertas.de</code>. So funktioniert der Hero für Köln, Bonn und Flensburg gleichermaßen – und führt nebenbei vor, dass jede Kommune ihre eigene Instanz bekommt.</p>
+        </article>
+
+      </div>
+
+      <p class="vhint">
+        <strong>Noch offen – drei Punkte für die finale Fassung:</strong><br />
+        <strong>1.</strong> Der Screenshot ist 1400 Pixel breit und damit auf Retina-Displays
+        zu klein – dasselbe Problem wie bei der jetzigen Grafik. Nötig wäre ein Export mit
+        <strong>2360 × 1330 Pixeln</strong> oder mehr.<br />
+        <strong>2.</strong> In der kleinen Kartenvorschau oben rechts stehen noch Kölner
+        Stadtteilnamen. Für den finalen Export sollte die Demo-Instanz auf eine neutrale
+        Beispielregion gestellt werden.<br />
+        <strong>3.</strong> Die Zahlen sind Platzhalter. Sobald belastbare Werte feststehen,
+        ersetzen sie die Beispiele – erfundene Zahlen wären hier das Gegenteil eines
+        Vertrauenssignals.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    /* Zähler hochlaufen lassen, sobald sie im Blick sind */
+    (function () {
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var targets = document.querySelectorAll('[data-count-to]');
+
+      function run(el) {
+        var to = parseInt(el.getAttribute('data-count-to'), 10);
+        if (reduced) { el.textContent = to.toLocaleString('de-DE'); return; }
+        var start = performance.now(), dur = 1400;
+        function step(now) {
+          // Fortschritt hart auf 0..1 begrenzen – sonst kann die Zeitquelle
+          // negative Werte liefern und der Zähler läuft ins Minus
+          var p = Math.min(Math.max((now - start) / dur, 0), 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(to * eased).toLocaleString('de-DE');
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      if (!('IntersectionObserver' in window)) {
+        targets.forEach(run);
+        return;
+      }
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { run(e.target); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.4 });
+
+      targets.forEach(function (el) { io.observe(el); });
+
+      // Sicherheitsnetz: Endwert direkt setzen, falls Beobachter oder
+      // Animation nicht laufen. Zahlen duerfen nie auf 0 stehen bleiben.
+      setTimeout(function () {
+        targets.forEach(function (el) {
+          if (el.textContent === '0') {
+            el.textContent = parseInt(el.getAttribute('data-count-to'), 10).toLocaleString('de-DE');
+          }
+        });
+      }, 2500);
+    })();
+
+    /* Statuswechsel im Produkt: In Prüfung -> Umgesetzt */
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var el = document.getElementById('vstatus');
+      if (!el) return;
+      setTimeout(function () {
+        el.textContent = 'Umgesetzt';
+        el.classList.add('is-done');
+      }, 3200);
+    })();
+  </script>
+
+</body>
+</html>
