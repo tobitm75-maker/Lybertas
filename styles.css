@@ -656,15 +656,6 @@ h1, h2, h3, h4 {
 }
 
 /* Footer logo – volles Lockup auf dunklem Navy-Band */
-.footer-logo {
-  height: auto;
-  width: auto;
-  max-width: 240px;
-  object-fit: contain;
-  margin-bottom: var(--space-md);
-  border-radius: var(--radius-md);
-}
-
 
 /* ============================================================
    8b. TRANSPARENZ-DASHBOARD-VORSCHAU
@@ -1354,10 +1345,6 @@ h1, h2, h3, h4 {
     grid-template-columns: 1fr auto;
     align-items: start;
   }
-}
-
-.footer-brand .footer-logo {
-  margin-bottom: var(--space-md);
 }
 
 .footer-claim {
