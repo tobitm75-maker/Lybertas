@@ -2095,3 +2095,216 @@ h1, h2, h3, h4 {
     box-shadow: 0 16px 34px -12px rgba(13, 27, 42, 0.16);
   }
 }
+
+/* ============================================================
+   18. ÜBER UNS
+   Ruhig und faktisch gehalten: Die Glaubwuerdigkeit entsteht aus
+   Offenheit ueber den fruehen Stand, nicht aus grossen Zahlen.
+============================================================ */
+.about-section {
+  background: var(--color-bg);
+  padding: var(--space-4xl) 0;
+}
+
+.about-head {
+  max-width: 720px;
+  margin-bottom: var(--space-2xl);
+}
+
+.about-head .section-title {
+  text-align: left;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1.55fr 1fr;
+    gap: var(--space-3xl);
+  }
+}
+
+.about-lead {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-lg);
+}
+
+.about-text {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.about-team {
+  margin-top: var(--space-xl);
+}
+
+.about-team img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.about-team figcaption {
+  margin-top: var(--space-sm);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+/* ---- Faktenspalte ---- */
+.about-facts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .about-facts {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-fact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-subtle);
+  border-left: 3px solid var(--color-blue-dark);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.about-fact__label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.about-fact__value {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.about-fact__note {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+}
+
+/* ---- Vorteile der fruehen Phase ---- */
+.about-why {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: var(--space-3xl) 0 var(--space-lg);
+}
+
+.about-benefits {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 760px) {
+  .about-benefits { grid-template-columns: repeat(2, 1fr); }
+}
+
+.about-benefit {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.about-benefit__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--color-blue-dark);
+  margin-bottom: var(--space-md);
+}
+
+.about-benefit h4 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.about-benefit p {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+/* ---- Einladung an fruehe Partner ---- */
+.about-invite {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-lg);
+  margin-top: var(--space-2xl);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+}
+
+@media (min-width: 860px) {
+  .about-invite {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2xl);
+  }
+}
+
+.about-invite__text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  max-width: 62ch;
+}
+
+.about-invite__text strong {
+  display: block;
+  font-size: 1.0625rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.3rem;
+}
+
+.about-invite .btn { flex-shrink: 0; }
+
+/* Hover passend zu den uebrigen Karten */
+@media (hover: hover) and (pointer: fine) {
+  .about-benefit {
+    transition: transform var(--transition-base),
+                box-shadow var(--transition-base),
+                border-color var(--transition-base);
+  }
+
+  .about-benefit:hover {
+    transform: translateY(-4px);
+    border-color: rgba(37, 99, 235, 0.28);
+    box-shadow: 0 16px 34px -12px rgba(13, 27, 42, 0.16);
+  }
+}
