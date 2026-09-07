@@ -137,13 +137,22 @@
           Verwaltung, Politik und Bürger.
           <span class="hero__headline-break">Auf einer Plattform.</span>
         </h1>
+      </div>
 
-        <!-- 2. Key-Visual: Verwaltung / Politik / Bürger auf der Plattform -->
-        <figure class="hero__visual">
+      <!-- 2. Key-Visual: Verwaltung / Politik / Bürger auf der Plattform
+           Liegt bewusst außerhalb des Containers, damit es ab Tablet
+           randlos über die volle Fensterbreite laufen kann.
+           Querformat ab Tablet, Hochformat auf dem Smartphone. -->
+      <figure class="hero__visual">
+        <picture>
+          <source media="(min-width: 768px)" srcset="./assets/hero-plattform-wide.webp" width="1672" height="941" />
           <img src="./assets/hero-plattform.webp"
                alt="Lybertas verbindet Bürger, Verwaltung und Politik: Anliegen wie „Mehr sichere Radwege in der Innenstadt“, eine Umfrage zur Lebensqualität und eine Antwort der Stadtverwaltung auf einer Stadtkarte"
                width="1087" height="1447" loading="eager" fetchpriority="high" />
-        </figure>
+        </picture>
+      </figure>
+
+      <div class="container hero__stack">
 
         <!-- 3. Kurzbeschreibung -->
         <p class="hero__subheadline">

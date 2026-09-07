@@ -1544,14 +1544,15 @@ h1, h2, h3, h4 {
   }
   .hero--stacked .hero__subheadline { margin-bottom: var(--space-lg); }
   .hero__visual { margin-bottom: var(--space-lg); }
-  .hero__visual img { max-height: min(520px, 46vh); }
 }
 
-/* Key-Visual: randlos in die Fläche eingebettet (kein Rahmen, kein Schatten) */
+/* Key-Visual: randlos in die Fläche eingebettet (kein Rahmen, kein Schatten).
+   Liegt außerhalb des Containers – auf Mobil daher eigener Seitenabstand. */
 .hero__visual {
   width: 100%;
   max-width: 720px;
-  margin: 0 0 var(--space-xl);
+  margin: 0 auto var(--space-xl);
+  padding-inline: var(--space-lg);
 }
 
 .hero__visual img {
@@ -1559,14 +1560,21 @@ h1, h2, h3, h4 {
   height: auto;
 }
 
-/* Ab Tablet: Höhe der hochformatigen Grafik begrenzen,
-   damit der CTA nicht unter den sichtbaren Bereich rutscht */
+/* Ab Tablet: Querformat-Variante randlos über die volle Fensterbreite */
 @media (min-width: 768px) {
+  .hero__visual {
+    max-width: none;
+    padding-inline: 0;
+  }
   .hero__visual img {
-    width: auto;
-    max-width: 100%;
-    max-height: min(560px, 50vh);
+    /* Nicht über die native Breite hochskalieren – sonst wird es unscharf */
+    max-width: 1672px;
     margin-inline: auto;
+    /* Sicherheitsventil auf flachen Fenstern: beschneidet nur den leeren
+       Kartenrand oben/unten, Knoten und Karten bleiben vollständig */
+    max-height: 78vh;
+    object-fit: cover;
+    object-position: center 42%;
   }
 }
 
