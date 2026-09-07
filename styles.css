@@ -1569,9 +1569,11 @@ h1, h2, h3, h4 {
   width: 100%;
   height: auto;
   /* Untere Kante weich auslaufen lassen, damit die Grafik in die
-     Textzone übergeht statt hart abzubrechen */
-  -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
-          mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+     Textzone übergeht statt hart abzubrechen.
+     Die Ausblendung beginnt erst bei 93 % – darüber liegt die Karte
+     „Stadt hat geantwortet“, die vollständig sichtbar bleiben muss. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 93%, transparent 100%);
+          mask-image: linear-gradient(to bottom, #000 93%, transparent 100%);
 }
 
 /* ---- Aufsteigende Leuchtpunkte im Übergang Grafik → Text ---- */
@@ -1695,11 +1697,8 @@ h1, h2, h3, h4 {
     /* Nicht über die native Breite hochskalieren – sonst wird es unscharf */
     max-width: 1672px;
     margin-inline: auto;
-    /* Sicherheitsventil auf flachen Fenstern: beschneidet nur den leeren
-       Kartenrand oben/unten, Knoten und Karten bleiben vollständig */
-    max-height: 78vh;
-    object-fit: cover;
-    object-position: center 42%;
+    /* Kein Beschnitt: die Grafik wird immer vollständig gezeigt, damit
+       auch die Antwortkarte am unteren Rand sichtbar bleibt */
   }
 }
 
@@ -1963,23 +1962,6 @@ h1, h2, h3, h4 {
   box-shadow: none;
 }
 
-/* Galerie „Einblicke in die Plattform" */
-.gallery-section { background: var(--color-bg-alt); padding: var(--space-4xl) 0; }
-.gallery {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-2xl);
-  max-width: 1000px;
-  margin: 0 auto;
-}
-.gallery figure { margin: 0; }
-.gallery figcaption {
-  margin-top: var(--space-md);
-  text-align: center;
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-}
-
 /* ============================================================
    16. GROSSE BILDSCHIRME
    Ab 1280px mehr Inhaltsbreite und mehr vertikale Luft, damit die
@@ -1994,8 +1976,7 @@ h1, h2, h3, h4 {
     --space-4xl: 7rem;
   }
 
-  .showcase-section .mockup,
-  .gallery {
+  .showcase-section .mockup {
     max-width: 1240px;
   }
 }
@@ -2007,8 +1988,7 @@ h1, h2, h3, h4 {
     --space-4xl: 8rem;
   }
 
-  .showcase-section .mockup,
-  .gallery {
+  .showcase-section .mockup {
     max-width: 1400px;
   }
 }
@@ -2016,5 +1996,98 @@ h1, h2, h3, h4 {
 @media (min-width: 1800px) {
   :root {
     --container-max: 1480px;
+  }
+}
+
+/* ============================================================
+   17. HOVER-INTERAKTIONEN
+   Karten und Feature-Zeilen reagieren auf die Maus, damit die
+   Seite lebendiger wirkt und jede Zeile als eigener Block liest.
+   Nur auf Geraeten mit echtem Zeiger – auf Touch stoert das sonst.
+============================================================ */
+@media (hover: hover) and (pointer: fine) {
+
+  /* ---- Vision: Stadtverwaltung / Politik / Buerger ---- */
+  .pillar {
+    transition: transform var(--transition-base),
+                box-shadow var(--transition-base),
+                border-color var(--transition-base);
+  }
+
+  .pillar:hover {
+    transform: translateY(-6px) scale(1.02);
+    border-color: rgba(37, 99, 235, 0.28);
+    box-shadow: 0 18px 40px -12px rgba(13, 27, 42, 0.18),
+                0 4px 12px rgba(13, 27, 42, 0.06);
+  }
+
+  .pillar__icon {
+    transition: transform var(--transition-base);
+  }
+
+  .pillar:hover .pillar__icon {
+    transform: scale(1.12) rotate(-3deg);
+  }
+
+  /* ---- Funktionen: Feature-Zeilen mit Screenshot ---- */
+  .feature-row {
+    border-radius: var(--radius-lg);
+    transition: transform var(--transition-base);
+  }
+
+  .feature-row:hover {
+    transform: translateY(-4px);
+  }
+
+  .feature-row .shot {
+    transition: transform var(--transition-slow),
+                box-shadow var(--transition-slow);
+  }
+
+  .feature-row:hover .shot {
+    transform: scale(1.03);
+    box-shadow: 0 34px 64px -20px rgba(13, 27, 42, 0.32),
+                0 10px 24px rgba(13, 27, 42, 0.10);
+  }
+
+  /* Ueberschrift der Zeile bekommt beim Hover die Markenfarbe */
+  .feature-row__title {
+    transition: color var(--transition-base);
+  }
+
+  .feature-row:hover .feature-row__title {
+    color: var(--color-blue-dark);
+  }
+
+  /* ---- Kleine Funktions-Karten ---- */
+  .func-card {
+    transition: transform var(--transition-base),
+                box-shadow var(--transition-base),
+                border-color var(--transition-base);
+  }
+
+  .func-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(37, 99, 235, 0.28);
+    box-shadow: 0 16px 34px -12px rgba(13, 27, 42, 0.16);
+  }
+
+  .func-card__icon {
+    transition: transform var(--transition-base);
+  }
+
+  .func-card:hover .func-card__icon {
+    transform: scale(1.12);
+  }
+
+  /* ---- Transparenz-Karten ---- */
+  .transparency-card {
+    transition: transform var(--transition-base),
+                box-shadow var(--transition-base);
+  }
+
+  .transparency-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 34px -12px rgba(13, 27, 42, 0.16);
   }
 }
