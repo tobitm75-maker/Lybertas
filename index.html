@@ -136,12 +136,21 @@
     <section class="hero hero--video" id="hero" aria-labelledby="heroHeadline">
 
       <div class="hero__video-media">
-        <!-- Ohne Quelle im Markup: Das Skript waehlt je nach Bildschirm
-             die passende Datei. Bis dahin – und wenn kein Skript laeuft
-             oder Bewegung reduziert ist – bleibt das Standbild stehen. -->
+        <!-- Standbild als unterste Ebene: Es ist immer da, unabhaengig
+             davon, ob das Video laedt, abspielt oder blockiert wird.
+             So kann der Hero nie leer sein. -->
+        <picture>
+          <source media="(max-width: 640px)" srcset="./assets/video/hero-poster-portrait.webp" />
+          <img class="hero__video-still" src="./assets/video/hero-poster.webp"
+               alt="Blick über eine Stadt bei Sonnenuntergang, verbunden durch leuchtende Linien zwischen mehreren Orten"
+               width="1280" height="720" fetchpriority="high" />
+        </picture>
+
+        <!-- Video liegt darueber und wird erst sichtbar, wenn es
+             tatsaechlich abspielt. Die Quelle setzt das Skript je nach
+             Bildschirmbreite. -->
         <video id="heroVideo"
-               poster="./assets/video/hero-poster.webp"
-               autoplay muted playsinline loop preload="metadata"
+               muted playsinline loop preload="none"
                disablepictureinpicture aria-hidden="true" tabindex="-1"></video>
       </div>
       <div class="hero__video-scrim" aria-hidden="true"></div>

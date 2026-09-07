@@ -2469,12 +2469,27 @@ h1, h2, h3, h4 {
   z-index: -2;
 }
 
+/* Standbild und Video liegen deckungsgleich uebereinander.
+   Das Bild ist immer sichtbar, das Video blendet sich darueber,
+   sobald es wirklich laeuft. Faellt es aus, bleibt das Bild. */
+.hero__video-media img,
 .hero__video-media video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 42%;
   display: block;
+}
+
+.hero__video-media video {
+  opacity: 0;
+  transition: opacity .6s ease;
+}
+
+.hero__video-media video.is-playing {
+  opacity: 1;
 }
 
 /* Verlauf fuer Lesbarkeit: unten und links kraeftiger */

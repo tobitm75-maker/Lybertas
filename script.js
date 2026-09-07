@@ -389,14 +389,12 @@ function initHeroVideo() {
   const v = document.getElementById('heroVideo');
   if (!v) return;
 
-  // Bei reduzierter Bewegung gar nichts laden – das Standbild genuegt
+  // Bei reduzierter Bewegung gar kein Video laden – das Standbild
+  // darunter bleibt stehen und zeigt dasselbe Motiv.
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   // Hochformat-Fassung auf schmalen Geraeten, sonst die breite
   const hochkant = window.matchMedia('(max-width: 640px)').matches;
-  v.setAttribute('poster', hochkant
-    ? './assets/video/hero-poster-portrait.webp'
-    : './assets/video/hero-poster.webp');
   v.src = hochkant
     ? './assets/video/hero-loop-portrait.mp4'
     : './assets/video/hero-loop.mp4';
@@ -407,42 +405,45 @@ function initHeroVideo() {
   v.playsInline = true;
   v.load();
 
-  let laeuft = false;
+  let sichtbar = false;
+
+  /* Erst einblenden, wenn wirklich Bilder laufen. Vorher bleibt das
+     Standbild stehen – so entsteht nie eine leere Flaeche. */
+  function einblenden() {
+    if (sichtbar) return;
+    sichtbar = true;
+    v.classList.add('is-playing');
+    document.removeEventListener('touchstart', starten);
+    document.removeEventListener('click', starten);
+  }
 
   function starten() {
-    if (laeuft) return;
     const p = v.play();
     if (p && typeof p.then === 'function') {
-      p.then(function () { laeuft = true; aufraeumen(); })
-       .catch(function () { /* spaeter erneut versuchen */ });
-    } else {
-      laeuft = true;
+      p.catch(function () { /* spaeter erneut versuchen */ });
     }
   }
 
-  function aufraeumen() {
-    v.removeEventListener('loadeddata', starten);
-    v.removeEventListener('canplay', starten);
-    document.removeEventListener('touchstart', starten);
-    document.removeEventListener('click', starten);
-    document.removeEventListener('visibilitychange', beiSichtbarkeit);
-  }
-
-  function beiSichtbarkeit() {
-    if (!document.hidden) starten();
-  }
-
-  /* Mehrere Anlaeufe: Direkt, sobald Daten da sind, und notfalls bei der
-     ersten Nutzeraktion. iOS lehnt play() ab, wenn beim Aufruf noch keine
-     Daten gepuffert sind – dann bliebe sonst dauerhaft das Standbild. */
+  // „playing" feuert erst, wenn tatsaechlich Bilder gezeigt werden
+  v.addEventListener('playing', einblenden);
   v.addEventListener('loadeddata', starten);
   v.addEventListener('canplay', starten);
+
+  // Laedt das Video gar nicht, bleibt das Standbild – kein leerer Kasten
+  v.addEventListener('error', function () {
+    v.classList.remove('is-playing');
+  });
+
+  // Letzte Rueckfallebene: erste Beruehrung oder Klick
   document.addEventListener('touchstart', starten, { passive: true });
   document.addEventListener('click', starten);
-  document.addEventListener('visibilitychange', beiSichtbarkeit);
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden && !v.ended) starten();
+  });
 
   starten();
 }
+
 
 
 
