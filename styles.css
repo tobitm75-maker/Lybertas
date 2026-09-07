@@ -2654,3 +2654,50 @@ body:has(.hero--video) .site-header.scrolled .nav-cta--about {
 .about-page {
   padding-top: var(--header-height);
 }
+
+/* ---- Über uns: Visionsteil ---- */
+.about-vision {
+  margin-top: var(--space-3xl);
+  padding-top: var(--space-2xl);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.about-vision__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.125rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  max-width: 24ch;
+  margin-bottom: var(--space-lg);
+}
+
+.about-vision__body { max-width: 68ch; }
+
+.about-vision__close {
+  max-width: 68ch;
+  margin-top: var(--space-lg);
+}
+
+/* Der bewusste Verzicht auf Empfehlungsalgorithmen ist das
+   Unterscheidungsmerkmal – deshalb hervorgehoben statt im Fliesstext. */
+.about-principle {
+  margin: var(--space-xl) 0 0;
+  padding: var(--space-lg) var(--space-xl);
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-bg-alt);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  max-width: 68ch;
+}
+
+.about-principle p {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.about-principle strong {
+  font-weight: 600;
+  color: var(--color-accent-dark);
+}
