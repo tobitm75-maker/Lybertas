@@ -440,8 +440,9 @@ h1, h2, h3, h4 {
   width: fit-content;
 }
 
-/* Nav Menu – Desktop */
-@media (min-width: 768px) {
+/* Nav Menu – Desktop
+   Erst ab 1024px, davor passen 5 Links + 2 Buttons nicht in eine Zeile */
+@media (min-width: 1024px) {
   .nav-toggle {
     display: none;
   }
@@ -461,6 +462,14 @@ h1, h2, h3, h4 {
     margin-top: 0;
     margin-left: var(--space-sm);
   }
+}
+
+/* Übergangsbereich: Navigation etwas kompakter, damit nichts umbricht */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .nav-menu { gap: 0; }
+  .nav-link { padding: var(--space-sm) 0.6rem; font-size: 0.9375rem; }
+  .nav-cta { margin-left: var(--space-xs); }
+  .nav-cta.btn { padding-inline: 1rem; }
 }
 
 /* ============================================================
@@ -1504,6 +1513,89 @@ h1, h2, h3, h4 {
   .hero__grid { grid-template-columns: 1.05fr 0.95fr; gap: var(--space-3xl); }
 }
 .hero__content { max-width: 620px; }
+
+/* ---- Gestapelter Hero: Headline → Key-Visual → Text → CTA ---- */
+.hero--stacked .hero__stack {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero--stacked .hero__headline {
+  max-width: 15ch;
+  margin-bottom: var(--space-xl);
+}
+
+@media (min-width: 640px) {
+  .hero--stacked .hero__headline { max-width: 20ch; }
+}
+
+/* Desktop: erste Zeile läuft durch, kompaktere Abstände,
+   damit Grafik und CTA gemeinsam sichtbar bleiben */
+@media (min-width: 1024px) {
+  .hero--stacked { padding-top: calc(var(--header-height) + var(--space-xl)); }
+  .hero--stacked .hero__headline {
+    max-width: none;
+    font-size: clamp(2.75rem, 4.4vw, 3.5rem);
+    margin-bottom: var(--space-lg);
+  }
+  .hero--stacked .hero__subheadline { margin-bottom: var(--space-lg); }
+  .hero__visual { margin-bottom: var(--space-lg); }
+  .hero__visual img { max-height: min(520px, 46vh); }
+}
+
+/* Key-Visual: randlos in die Fläche eingebettet (kein Rahmen, kein Schatten) */
+.hero__visual {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 0 var(--space-xl);
+}
+
+.hero__visual img {
+  width: 100%;
+  height: auto;
+}
+
+/* Ab Tablet: Höhe der hochformatigen Grafik begrenzen,
+   damit der CTA nicht unter den sichtbaren Bereich rutscht */
+@media (min-width: 768px) {
+  .hero__visual img {
+    width: auto;
+    max-width: 100%;
+    max-height: min(560px, 50vh);
+    margin-inline: auto;
+  }
+}
+
+.hero--stacked .hero__subheadline {
+  max-width: 46ch;
+  margin-inline: auto;
+  margin-bottom: var(--space-xl);
+}
+
+.hero--stacked .hero__actions {
+  justify-content: center;
+}
+
+.hero--stacked .hero__trust {
+  justify-content: center;
+}
+
+/* Mobil: CTA über die volle Breite – wie im Entwurf */
+@media (max-width: 639px) {
+  .hero--stacked .hero__actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero--stacked .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
 .hero__eyebrow {
   display: inline-block;
   font-size: 0.8125rem;

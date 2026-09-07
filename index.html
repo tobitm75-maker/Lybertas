@@ -128,56 +128,50 @@
     <!-- ============================================================
       HERO – Vision + Produkt-Shot + Musterstadt-CTA
     ============================================================ -->
-    <section class="hero" id="hero" aria-labelledby="heroHeadline">
+    <section class="hero hero--stacked" id="hero" aria-labelledby="heroHeadline">
       <div class="hero__bg" aria-hidden="true"></div>
-      <div class="container hero__grid">
-        <div class="hero__content">
-          <div class="hero__eyebrow">Beteiligungsplattform für Kommunen</div>
-          <h1 class="hero__headline" id="heroHeadline">
-            Verwaltung, Politik und Bürger.
-            <span class="hero__headline-break">Auf einer Plattform.</span>
-          </h1>
-          <p class="hero__subheadline">
-            Lybertas digitalisiert kommunale Beteiligung – von Mängelmelder und Kartenfunktion über
-            Umfragen und Abstimmungen bis zu Chatgruppen und einer eigenen Mitarbeiterplattform.
-            Personalisiert für Ihre Kommune. Für stärkere demokratische Prozesse.
-          </p>
-          <div class="hero__actions">
-            <!-- Live-Demo: Musterstadt -->
-            <a href="https://musterstadt.lybertas.de" class="btn btn-primary btn-large">
-              <span>Musterstadt ansehen</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-            <a href="#kontakt" class="btn btn-secondary btn-large">Demo anfragen</a>
-          </div>
-          <p class="hero__demo-hint">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-            Live-Demo: So könnte Ihre Kommune aussehen.
-          </p>
-          <ul class="hero__trust" role="list" aria-label="Eigenschaften">
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>DSGVO-konform</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Made in Germany</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Barrierearm</li>
-          </ul>
+      <div class="container hero__stack">
+
+        <!-- 1. Headline -->
+        <h1 class="hero__headline" id="heroHeadline">
+          Verwaltung, Politik und Bürger.
+          <span class="hero__headline-break">Auf einer Plattform.</span>
+        </h1>
+
+        <!-- 2. Key-Visual: Verwaltung / Politik / Bürger auf der Plattform -->
+        <figure class="hero__visual">
+          <img src="./assets/hero-plattform.webp"
+               alt="Lybertas verbindet Bürger, Verwaltung und Politik: Anliegen wie „Mehr sichere Radwege in der Innenstadt“, eine Umfrage zur Lebensqualität und eine Antwort der Stadtverwaltung auf einer Stadtkarte"
+               width="1087" height="1447" loading="eager" fetchpriority="high" />
+        </figure>
+
+        <!-- 3. Kurzbeschreibung -->
+        <p class="hero__subheadline">
+          Anliegen, Umfragen, Karten und direkter Dialog –
+          digital verbunden in einer kommunalen Plattform.
+        </p>
+
+        <!-- 4. Call-to-Action -->
+        <div class="hero__actions">
+          <!-- Live-Demo: Musterstadt -->
+          <a href="https://musterstadt.lybertas.de" class="btn btn-primary btn-large">
+            <span>Musterstadt ansehen</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#kontakt" class="btn btn-secondary btn-large">Demo anfragen</a>
         </div>
 
-        <!-- Produkt-Shot (Screenshot-Slot) -->
-        <div class="hero__shot">
-          <figure class="shot shot--hero">
-            <div class="shot__bar" aria-hidden="true">
-              <span class="shot__dot"></span><span class="shot__dot"></span><span class="shot__dot"></span>
-              <span class="shot__url">musterstadt.lybertas.de</span>
-            </div>
-            <div class="shot__body">
-              <img class="shot__img" src="./assets/screenshots/hero-dashboard.webp" alt="Lybertas Dashboard einer Beispiel-Kommune"
-                   onerror="this.style.display='none';this.nextElementSibling.removeAttribute('hidden')" />
-              <div class="shot__placeholder" hidden>
-                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-                <span>Produkt-Screenshot: Dashboard</span>
-              </div>
-            </div>
-          </figure>
-        </div>
+        <p class="hero__demo-hint">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          Live-Demo: So könnte Ihre Kommune aussehen.
+        </p>
+
+        <ul class="hero__trust" role="list" aria-label="Eigenschaften">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>DSGVO-konform</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Made in Germany</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Barrierearm</li>
+        </ul>
+
       </div>
     </section>
 
