@@ -2441,3 +2441,128 @@ h1, h2, h3, h4 {
 }
 
 .legal__back:hover { color: var(--color-blue-dark); }
+
+/* ============================================================
+   20. HERO MIT VIDEO-SCHLEIFE
+   Alternative zur Bildfassung. Beide Regelwerke bleiben erhalten,
+   damit sich die Startseite ohne Stilaenderung zurueckschalten laesst.
+============================================================ */
+.hero--video {
+  position: relative;
+  isolation: isolate;
+  min-height: 620px;
+  height: 82vh;
+  max-height: 880px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 0;
+  background: var(--color-navy);
+  /* Der Header liegt darueber, deshalb Platz an der Oberkante */
+  margin-top: calc(-1 * var(--header-height));
+  padding-top: var(--header-height);
+}
+
+.hero__video-media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.hero__video-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  display: block;
+}
+
+/* Verlauf fuer Lesbarkeit: unten und links kraeftiger */
+.hero__video-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to top, rgba(9, 20, 33, .88) 0%, rgba(9, 20, 33, .55) 38%, rgba(9, 20, 33, .18) 68%, rgba(9, 20, 33, .30) 100%),
+    linear-gradient(to right, rgba(9, 20, 33, .58) 0%, transparent 62%);
+}
+
+.hero__video-inner {
+  width: 100%;
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+}
+
+/* ---- Textfassungen auf dunklem Grund ---- */
+.hero__headline--onvideo {
+  color: var(--color-white);
+  max-width: 17ch;
+  margin-bottom: 0;
+  text-shadow: 0 2px 30px rgba(9, 20, 33, .45);
+}
+
+.hero__headline--onvideo .hero__headline-break {
+  color: var(--color-accent);
+}
+
+.hero__subheadline--onvideo {
+  color: rgba(255, 255, 255, .88);
+  max-width: 52ch;
+  margin-top: var(--space-lg);
+  margin-bottom: 0;
+  text-shadow: 0 1px 16px rgba(9, 20, 33, .5);
+}
+
+.hero--video .hero__actions {
+  margin-top: var(--space-xl);
+}
+
+.hero__trust--onvideo {
+  margin-top: var(--space-xl);
+}
+
+.hero__trust--onvideo li { color: rgba(255, 255, 255, .84); }
+
+/* Header ueber dem Video: transparent, damit kein weisser Balken entsteht */
+.hero--video ~ * .site-header,
+body:has(.hero--video) .site-header {
+  background-color: rgba(9, 20, 33, .28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom-color: transparent;
+}
+
+body:has(.hero--video) .site-header .nav-logo__word { color: var(--color-white); }
+body:has(.hero--video) .site-header .nav-link { color: rgba(255, 255, 255, .85); }
+body:has(.hero--video) .site-header .nav-link:hover { color: var(--color-white); background: rgba(255,255,255,.12); }
+body:has(.hero--video) .site-header .nav-toggle__bar { background-color: var(--color-white); }
+
+/* Sobald gescrollt wird, wird der Header wieder hell und lesbar */
+body:has(.hero--video) .site-header.scrolled {
+  background-color: rgba(255, 255, 255, .94);
+  border-bottom-color: var(--color-border);
+}
+
+body:has(.hero--video) .site-header.scrolled .nav-logo__word { color: var(--color-text-primary); }
+body:has(.hero--video) .site-header.scrolled .nav-link { color: var(--color-text-secondary); }
+body:has(.hero--video) .site-header.scrolled .nav-toggle__bar { background-color: var(--color-text-primary); }
+
+/* Kein Video bei reduzierter Bewegung – das Standbild genuegt */
+@media (prefers-reduced-motion: reduce) {
+  .hero__video-media video { display: none; }
+}
+
+@media (max-width: 640px) {
+  .hero--video {
+    min-height: 580px;
+    height: auto;
+    /* Oben ausrichten statt zentrieren: Bei zentrierter Ausrichtung
+       laeuft laengerer Inhalt nach oben aus dem Kasten heraus und
+       verschwindet hinter dem Header. */
+    align-items: flex-start;
+    padding-top: calc(var(--header-height) + var(--space-lg));
+    padding-bottom: var(--space-2xl);
+  }
+  .hero__headline--onvideo { max-width: 14ch; }
+  .hero--video .hero__actions .btn { width: 100%; justify-content: center; }
+}

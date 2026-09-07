@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initSmoothScroll();
   initScrollAnimations();
   initScrollHeader();
+  initHeroVideo();
   initElectionCountdown();
   initCouncilChart();
   setFooterYear();
@@ -375,6 +376,30 @@ function setFooterYear() {
   const yearEl = document.getElementById('footerYear');
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
+  }
+}
+
+
+/* ============================================================
+   9. HERO-VIDEO
+   Quelle nach Bildschirmbreite waehlen und starten. Bei reduzierter
+   Bewegung wird nichts geladen, dann bleibt das Standbild stehen.
+============================================================ */
+function initHeroVideo() {
+  const v = document.getElementById('heroVideo');
+  if (!v) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const schmal = window.matchMedia('(max-width: 767px)').matches;
+  v.src = schmal ? './assets/video/hero-loop-mobile.mp4'
+                 : './assets/video/hero-loop.mp4';
+  v.load();
+
+  const p = v.play();
+  if (p && typeof p.catch === 'function') {
+    // Blockiert der Browser das Abspielen, bleibt das Standbild stehen
+    p.catch(function () {});
   }
 }
 

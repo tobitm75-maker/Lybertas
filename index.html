@@ -125,23 +125,81 @@
   <main>
 
     <!-- ============================================================
-      HERO – Headline, Key-Visual, Kurzbeschreibung, Demo-CTA
+      HERO MIT VIDEO-SCHLEIFE
+
+      ZURUECKSCHALTEN AUF DIE BILDFASSUNG:
+      Diesen Abschnitt bis zum Ende des <section>-Elements loeschen und
+      den darunter auskommentierten Block "HERO – BILDFASSSUNG" wieder
+      aktivieren (Kommentarzeichen entfernen). Sonst ist nichts zu tun,
+      die Stile fuer beide Fassungen bleiben im Stylesheet erhalten.
     ============================================================ -->
+    <section class="hero hero--video" id="hero" aria-labelledby="heroHeadline">
+
+      <div class="hero__video-media">
+        <!-- Ohne Quelle im Markup: Das Skript waehlt je nach Bildschirm
+             die passende Datei. Bis dahin – und wenn kein Skript laeuft
+             oder Bewegung reduziert ist – bleibt das Standbild stehen. -->
+        <video id="heroVideo"
+               poster="./assets/video/hero-poster.webp"
+               muted playsinline loop preload="none"
+               disablepictureinpicture aria-hidden="true" tabindex="-1"></video>
+      </div>
+      <div class="hero__video-scrim" aria-hidden="true"></div>
+
+      <div class="container hero__video-inner">
+
+        <h1 class="hero__headline hero__headline--onvideo" id="heroHeadline">
+          Verwaltung, Politik und Bürger.
+          <span class="hero__headline-break">Auf einer Plattform.</span>
+        </h1>
+
+        <p class="hero__subheadline hero__subheadline--onvideo">
+          Anliegen, Umfragen, Karten und direkter Dialog –
+          digital verbunden in einer kommunalen Plattform.
+        </p>
+
+        <div class="hero__actions">
+          <a href="#kontakt" class="btn btn-primary btn-large">
+            <span>Demo anfragen</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <ul class="hero__trust hero__trust--onvideo" role="list" aria-label="Eigenschaften">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>DSGVO-konform</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Made in Germany</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Barrierearm</li>
+        </ul>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+      HERO – BILDFASSSUNG (deaktiviert)
+      Die zuvor eingesetzte Fassung mit dem gezeichneten Key-Visual.
+      Zum Zurueckschalten den Video-Abschnitt oben entfernen und diesen
+      Block wieder aktivieren.
+    ============================================================ -->
+    <!--
+    <!~~ ============================================================
+      HERO – Headline, Key-Visual, Kurzbeschreibung, Demo-CTA
+    ============================================================ ~~>
     <section class="hero hero--stacked" id="hero" aria-labelledby="heroHeadline">
       <div class="hero__bg" aria-hidden="true"></div>
       <div class="container hero__stack">
 
-        <!-- 1. Headline -->
+        <!~~ 1. Headline ~~>
         <h1 class="hero__headline" id="heroHeadline">
           Verwaltung, Politik und Bürger.
           <span class="hero__headline-break">Auf einer Plattform.</span>
         </h1>
       </div>
 
-      <!-- 2. Key-Visual: Verwaltung / Politik / Bürger auf der Plattform
+      <!~~ 2. Key-Visual: Verwaltung / Politik / Bürger auf der Plattform
            Liegt bewusst außerhalb des Containers, damit es ab Tablet
            randlos über die volle Fensterbreite laufen kann.
-           Querformat ab Tablet, Hochformat auf dem Smartphone. -->
+           Querformat ab Tablet, Hochformat auf dem Smartphone. ~~>
       <figure class="hero__visual">
         <picture>
           <source media="(min-width: 768px)" srcset="./assets/hero-plattform-wide.webp" width="1672" height="941" />
@@ -150,8 +208,8 @@
                width="1087" height="1447" loading="eager" fetchpriority="high" />
         </picture>
 
-        <!-- Aufsteigende Leuchtpunkte im Übergang zur Textzone.
-             Rein dekorativ; pausiert bei „Bewegung reduzieren“. -->
+        <!~~ Aufsteigende Leuchtpunkte im Übergang zur Textzone.
+             Rein dekorativ; pausiert bei „Bewegung reduzieren“. ~~>
         <div class="hero__glow" aria-hidden="true">
           <span class="hero__glow-dot hero__glow-dot--1"></span>
           <span class="hero__glow-dot hero__glow-dot--2"></span>
@@ -165,13 +223,13 @@
 
       <div class="container hero__stack">
 
-        <!-- 3. Kurzbeschreibung -->
+        <!~~ 3. Kurzbeschreibung ~~>
         <p class="hero__subheadline">
           Anliegen, Umfragen, Karten und direkter Dialog –
           digital verbunden in einer kommunalen Plattform.
         </p>
 
-        <!-- 4. Call-to-Action -->
+        <!~~ 4. Call-to-Action ~~>
         <div class="hero__actions">
           <a href="#kontakt" class="btn btn-primary btn-large">
             <span>Demo anfragen</span>
@@ -187,6 +245,9 @@
 
       </div>
     </section>
+
+    -->
+
 
 
     <!-- ============================================================
