@@ -1989,7 +1989,7 @@ h1, h2, h3, h4 {
 @media (max-width: 767px) {
   .showcase-section {
     background: #fefefe;
-    padding: var(--space-2xl) 0 var(--space-lg);
+    padding: var(--space-3xl) 0 var(--space-lg);
   }
 
   .showcase-section > .container {
@@ -2003,12 +2003,16 @@ h1, h2, h3, h4 {
     border-radius: 0;
   }
 
-  /* Ueberschrift wie in den uebrigen Abschnitten, nur enger gesetzt */
+  /* Ueberschrift exakt wie in den uebrigen Abschnitten: gleiche Klasse
+     .section-head, mittig, gleiche Abstaende. Die seitliche Polsterung
+     kommt hier vom Kopf selbst, weil der Container fuer die randlose
+     Grafik keine hat. */
   .showcase-head {
     position: static;
     width: auto;
     height: auto;
-    margin: 0 0 var(--space-xl);
+    max-width: 720px;
+    margin: 0 auto var(--space-2xl);
     overflow: visible;
     clip: auto;
     white-space: normal;
@@ -2016,10 +2020,7 @@ h1, h2, h3, h4 {
     text-align: center;
   }
 
-  .showcase-head .section-title { margin-bottom: var(--space-sm); }
-
   .showcase-head .section-subtitle {
-    margin: 0 auto;
     max-width: 34ch;
     text-wrap: balance;   /* verhindert ein einzelnes Wort in der 2. Zeile */
   }
