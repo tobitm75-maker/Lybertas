@@ -3,55 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Über uns – Entwurf | Lybertas</title>
 
-  <!-- Interner Entwurf: nicht verlinkt, nicht fuer Suchmaschinen -->
-  <meta name="robots" content="noindex, nofollow" />
+  <title>Über uns – Lybertas</title>
+  <meta name="description" content="Lybertas ist aus einem studentischen Projekt entstanden und wird heute als Start-up entwickelt. Wer wir sind, was wir vorhaben und was die frühe Phase für Kommunen bedeutet." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lybertas.de/ueber-uns.html" />
+
+  <meta property="og:title" content="Über uns – Lybertas" />
+  <meta property="og:description" content="Ein junges Team mit einer großen Vision: Beteiligung soll nicht von der Größe oder dem Budget einer Kommune abhängen." />
+  <meta property="og:url" content="https://lybertas.de/ueber-uns.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:site_name" content="Lybertas" />
 
   <link rel="icon" type="image/svg+xml" href="./assets/logo-mark.svg" />
+  <link rel="icon" type="image/png" href="./assets/icon.png" />
+  <link rel="apple-touch-icon" href="./assets/icon.png" />
+
   <!-- Schriften lokal eingebunden – keine Verbindung zu Google -->
   <link rel="preload" href="./assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="./assets/fonts/fonts.css" />
   <link rel="stylesheet" href="./styles.css" />
-
-  <style>
-    .draft-banner {
-      background: var(--color-navy);
-      color: var(--color-text-on-dark);
-      padding: var(--space-md) 0;
-      font-size: 0.875rem;
-      text-align: center;
-    }
-    .draft-banner a { color: var(--color-accent); text-decoration: underline; }
-    .draft-note {
-      max-width: var(--container-max);
-      margin: var(--space-2xl) auto 0;
-      padding: var(--space-lg);
-      border-left: 3px solid var(--color-accent);
-      background: var(--color-bg-alt);
-      border-radius: 0 var(--radius-md) var(--radius-md) 0;
-      font-size: 0.9375rem;
-      color: var(--color-text-secondary);
-    }
-    @media (min-width: 1024px) { .draft-note { margin-inline: auto; width: calc(100% - 6rem); } }
-  </style>
 </head>
 <body>
 
-  <div class="draft-banner">
-    Entwurf zur Abstimmung – nicht öffentlich verlinkt und nicht auf der Startseite.
-    Zurück zur <a href="./index.html">Startseite</a>.
-  </div>
-
-  <main>
   <!-- ============================================================
-    ÜBER UNS
-    Bewusst offen formuliert: Wir haben noch keine Referenzkommunen,
-    also wird auch keine behauptet. Vertrauen entsteht hier über
-    Herkunft, Förderung, Haltung und ein klares Angebot an frühe
-    Partner – nicht über erfundene Zahlen.
+    HEADER / NAVIGATION
   ============================================================ -->
-  <section class="about-section" id="ueber-uns" aria-labelledby="aboutTitle">
+  <header class="site-header" id="top" role="banner">
+    <nav class="nav-container" aria-label="Hauptnavigation">
+
+      <a href="./index.html" class="nav-logo" aria-label="Lybertas Startseite">
+        <img src="./assets/logo-mark.svg" alt="Lybertas" class="nav-logo__img" width="44" height="44" loading="eager" />
+        <span class="nav-logo__word">Lybertas</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navMenu">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu" role="list">
+        <li><a href="./index.html#vision" class="nav-link">Vision</a></li>
+        <li><a href="./index.html#funktionen" class="nav-link">Funktionen</a></li>
+        <li><a href="./index.html#kommunen" class="nav-link">Für Kommunen</a></li>
+        <li><a href="./index.html#koeln" class="nav-link">Köln-Beispiel</a></li>
+        <li>
+          <a href="./ueber-uns.html" class="btn btn-accent nav-cta nav-cta--about" aria-current="page">Über uns</a>
+        </li>
+        <li>
+          <a href="./index.html#kontakt" class="btn btn-primary nav-cta nav-cta--demo">Demo anfragen</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="about-page">
+<section class="about-section" id="ueber-uns" aria-labelledby="aboutTitle">
     <div class="container">
 
       <div class="about-head">
@@ -198,16 +207,37 @@
 
     </div>
   </section>
-
-    <div class="draft-note">
-      <strong>Noch zu klären:</strong> Die Texte sind mein Entwurf auf Basis unseres Gesprächs
-      und ersetzen nicht eure eigene Formulierung. Zu prüfen sind insbesondere die genaue
-      Schreibweise und Nennbarkeit von „Pioneer Lab“, die Aussage zu den Kosten gegenüber
-      etablierten Anbietern sowie die Frage, ob dieser Inhalt als eigene Seite
-      (<code>/ueber-uns</code>) statt als Abschnitt der Startseite laufen soll.
-      Für ein Foto des Gründerteams ist im Code bereits ein Platz vorbereitet.
-    </div>
   </main>
+
+  <!-- ============================================================
+    FOOTER
+  ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <p class="footer-claim">Die Beteiligungsplattform für Verwaltung, Politik und Bürger.</p>
+          <p class="footer-status">Lybertas befindet sich derzeit im Aufbau.</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer-Navigation">
+          <ul role="list">
+            <li><a href="./index.html#funktionen" class="footer-link">Funktionen</a></li>
+            <li><a href="./ueber-uns.html" class="footer-link">Über uns</a></li>
+            <li><a href="./index.html#kontakt" class="footer-link">Demo anfragen</a></li>
+            <li><a href="./impressum.html" class="footer-link">Impressum</a></li>
+            <li><a href="./datenschutz.html" class="footer-link">Datenschutz</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="footerYear"></span> Lybertas. Alle Rechte vorbehalten.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
 
 </body>
 </html>

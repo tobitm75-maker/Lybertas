@@ -2456,11 +2456,16 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 0;
   background: var(--color-navy);
-  /* Der Header liegt darueber, deshalb Platz an der Oberkante */
-  margin-top: calc(-1 * var(--header-height));
-  padding-top: var(--header-height);
+  /* Der Header ist fest positioniert und belegt keinen Platz im Layout.
+     Der Hero beginnt daher ohnehin ganz oben – kein negativer Abstand.
+     Der obere Innenabstand haelt den Text unter dem Header frei. */
+  margin-top: 0;
+  padding: calc(var(--header-height) + var(--space-lg)) 0 var(--space-2xl);
+  /* "safe" verhindert, dass zentrierter Inhalt auf niedrigen Fenstern
+     nach oben aus dem Kasten laeuft und unter den Header rutscht. */
+  align-items: center;
+  align-items: safe center;
 }
 
 .hero__video-media {
@@ -2607,4 +2612,45 @@ body:has(.hero--video) .site-header.scrolled .nav-toggle__bar { background-color
   .hero__headline--onvideo { max-width: 14ch; }
 
   .hero--video .hero__actions .btn { width: 100%; justify-content: center; }
+}
+
+/* ============================================================
+   21. AKZENT-BUTTON (Gruen) – fuer „Über uns"
+   Nimmt das Gruen auf, das im Hero die zweite Headline-Zeile traegt.
+   Schrift dunkelblau statt weiss: Weiss auf diesem Gruen erreicht nur
+   etwa 1,8:1 Kontrast und waere nicht lesbar, Navy liegt bei rund 9:1.
+============================================================ */
+.btn-accent {
+  background: var(--color-accent);
+  color: var(--color-navy);
+  font-weight: 600;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(45, 212, 160, 0.32);
+}
+
+.btn-accent:hover,
+.btn-accent:focus-visible {
+  background: var(--color-accent-dark);
+  color: var(--color-white);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(45, 212, 160, 0.42);
+}
+
+.btn-accent:active { transform: translateY(0); }
+
+/* Auf dem dunklen Header ueber dem Video bleibt der Button unveraendert –
+   das Gruen hebt sich dort ebenso ab wie auf hellem Grund. */
+body:has(.hero--video) .site-header .nav-cta--about,
+body:has(.hero--video) .site-header.scrolled .nav-cta--about {
+  color: var(--color-navy);
+}
+
+/* Aktive Seite: dezent markiert statt zusaetzlich eingefaerbt */
+.nav-cta--about[aria-current="page"] {
+  box-shadow: 0 0 0 3px rgba(45, 212, 160, 0.28);
+}
+
+/* ---- Über-uns-Seite: Abstand unter dem festen Header ---- */
+.about-page {
+  padding-top: var(--header-height);
 }
