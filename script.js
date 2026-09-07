@@ -389,19 +389,61 @@ function initHeroVideo() {
   const v = document.getElementById('heroVideo');
   if (!v) return;
 
+  // Bei reduzierter Bewegung gar nichts laden – das Standbild genuegt
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const schmal = window.matchMedia('(max-width: 767px)').matches;
-  v.src = schmal ? './assets/video/hero-loop-mobile.mp4'
-                 : './assets/video/hero-loop.mp4';
+  // Hochformat-Fassung auf schmalen Geraeten, sonst die breite
+  const hochkant = window.matchMedia('(max-width: 640px)').matches;
+  v.setAttribute('poster', hochkant
+    ? './assets/video/hero-poster-portrait.webp'
+    : './assets/video/hero-poster.webp');
+  v.src = hochkant
+    ? './assets/video/hero-loop-portrait.mp4'
+    : './assets/video/hero-loop.mp4';
+
+  // Fuer das automatische Abspielen auf Mobilgeraeten zwingend
+  v.muted = true;
+  v.defaultMuted = true;
+  v.playsInline = true;
   v.load();
 
-  const p = v.play();
-  if (p && typeof p.catch === 'function') {
-    // Blockiert der Browser das Abspielen, bleibt das Standbild stehen
-    p.catch(function () {});
+  let laeuft = false;
+
+  function starten() {
+    if (laeuft) return;
+    const p = v.play();
+    if (p && typeof p.then === 'function') {
+      p.then(function () { laeuft = true; aufraeumen(); })
+       .catch(function () { /* spaeter erneut versuchen */ });
+    } else {
+      laeuft = true;
+    }
   }
+
+  function aufraeumen() {
+    v.removeEventListener('loadeddata', starten);
+    v.removeEventListener('canplay', starten);
+    document.removeEventListener('touchstart', starten);
+    document.removeEventListener('click', starten);
+    document.removeEventListener('visibilitychange', beiSichtbarkeit);
+  }
+
+  function beiSichtbarkeit() {
+    if (!document.hidden) starten();
+  }
+
+  /* Mehrere Anlaeufe: Direkt, sobald Daten da sind, und notfalls bei der
+     ersten Nutzeraktion. iOS lehnt play() ab, wenn beim Aufruf noch keine
+     Daten gepuffert sind – dann bliebe sonst dauerhaft das Standbild. */
+  v.addEventListener('loadeddata', starten);
+  v.addEventListener('canplay', starten);
+  document.addEventListener('touchstart', starten, { passive: true });
+  document.addEventListener('click', starten);
+  document.addEventListener('visibilitychange', beiSichtbarkeit);
+
+  starten();
 }
+
 
 
 /* ============================================================
