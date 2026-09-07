@@ -343,6 +343,17 @@ function initScrollAnimations() {
     observer.observe(el);
   });
 
+  // Sicherheitsnetz: Falls der Beobachter aus irgendeinem Grund nicht
+  // ausloest, werden alle noch versteckten Elemente nach kurzer Zeit
+  // eingeblendet. Inhalte duerfen nie dauerhaft unsichtbar bleiben.
+  window.setTimeout(function () {
+    targets.forEach(function (el) {
+      if (!el.classList.contains('is-visible')) {
+        el.classList.add('is-visible');
+      }
+    });
+  }, 2500);
+
   // Gestaffelte Animation für Karten (Säulen + Funktions-Grid)
   document.querySelectorAll('.pillar, .func-card').forEach(function (card, index) {
     card.style.transitionDelay = ((index % 3) * 0.08) + 's';

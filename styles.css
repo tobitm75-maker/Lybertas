@@ -1979,3 +1979,42 @@ h1, h2, h3, h4 {
   font-size: 0.9rem;
   color: var(--color-text-muted);
 }
+
+/* ============================================================
+   16. GROSSE BILDSCHIRME
+   Ab 1280px mehr Inhaltsbreite und mehr vertikale Luft, damit die
+   Sektionen auf breiten Monitoren nicht gedraengt in der Mitte kleben.
+   Bildbreiten sind bei 1400px gedeckelt – das ist die native Breite
+   der Screenshots, darueber wuerden sie unscharf.
+============================================================ */
+@media (min-width: 1280px) {
+  :root {
+    --container-max: 1280px;
+    --space-3xl: 5.25rem;
+    --space-4xl: 7rem;
+  }
+
+  .showcase-section .mockup,
+  .gallery {
+    max-width: 1240px;
+  }
+}
+
+@media (min-width: 1600px) {
+  :root {
+    --container-max: 1400px;
+    --space-3xl: 6rem;
+    --space-4xl: 8rem;
+  }
+
+  .showcase-section .mockup,
+  .gallery {
+    max-width: 1400px;
+  }
+}
+
+@media (min-width: 1800px) {
+  :root {
+    --container-max: 1480px;
+  }
+}
