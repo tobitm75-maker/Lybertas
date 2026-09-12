@@ -1,9 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Sitemap fuer lybertas.de
+
+  Enthalten sind nur Seiten, die in den Google-Index sollen. Die beiden
+  Vorschauseiten (hero-vorschau.html, hero-video-vorschau.html) tragen
+  ein noindex und gehoeren deshalb bewusst nicht hierher.
+
+  Die Adressen muessen exakt den canonical-Angaben in den HTML-Dateien
+  entsprechen – sonst meldet die Search Console Weiterleitungen oder
+  abweichende Kanonische.
+
+  Bei inhaltlichen Aenderungen bitte das jeweilige <lastmod> mitpflegen.
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://lybertas.de/</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <!-- TODO: nach Anlage von impressum.html und datenschutz.html hier ergänzen -->
+
+  <url>
+    <loc>https://lybertas.de/ueber-uns.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://lybertas.de/impressum.html</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://lybertas.de/datenschutz.html</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>
