@@ -414,6 +414,8 @@ h1, h2, h3, h4 {
   padding: var(--space-lg);
   gap: var(--space-sm);
   z-index: 99;
+  /* Hebt das aufgeklappte Menue sichtbar vom Inhalt darunter ab */
+  box-shadow: 0 16px 32px -12px rgba(13, 27, 42, 0.18);
 }
 
 .nav-menu.is-open {
@@ -433,7 +435,9 @@ h1, h2, h3, h4 {
 .nav-link:hover,
 .nav-link:focus-visible {
   color: var(--color-text-primary);
-  background: rgba(255,255,255,0.05);
+  /* Navy getoent statt weiss: Der Grundzustand des Menues ist hell,
+     eine weisse Flaeche waere darauf nicht zu sehen. */
+  background: rgba(13, 27, 42, 0.05);
 }
 
 .nav-cta {
@@ -2412,9 +2416,19 @@ body:has(.hero--video) .site-header:not(.scrolled) .nav-logo__img {
   border-radius: 50%;
   padding: 3px;
 }
-body:has(.hero--video) .site-header .nav-link { color: rgba(255, 255, 255, .85); }
-body:has(.hero--video) .site-header .nav-link:hover { color: var(--color-white); background: rgba(255,255,255,.12); }
+/* Die Burger-Striche liegen immer auf dem dunklen Header – hier ist
+   Weiss in jeder Breite richtig. */
 body:has(.hero--video) .site-header .nav-toggle__bar { background-color: var(--color-white); }
+
+/* Weisse Menuepunkte NUR ab der Desktop-Breite: Erst dort liegen die
+   Links direkt auf dem dunklen Header. Darunter klappt das Menue als
+   eigenes helles Feld unter dem Header auf – weisse Schrift waere dort
+   auf hellem Grund unsichtbar. */
+@media (min-width: 1024px) {
+  body:has(.hero--video) .site-header .nav-link { color: rgba(255, 255, 255, .85); }
+  body:has(.hero--video) .site-header .nav-link:hover { color: var(--color-white); background: rgba(255,255,255,.12); }
+  body:has(.hero--video) .site-header.scrolled .nav-link { color: var(--color-text-secondary); }
+}
 
 /* Sobald gescrollt wird, wird der Header wieder hell und lesbar */
 body:has(.hero--video) .site-header.scrolled {
@@ -2423,7 +2437,6 @@ body:has(.hero--video) .site-header.scrolled {
 }
 
 body:has(.hero--video) .site-header.scrolled .nav-logo__word { color: var(--color-text-primary); }
-body:has(.hero--video) .site-header.scrolled .nav-link { color: var(--color-text-secondary); }
 body:has(.hero--video) .site-header.scrolled .nav-toggle__bar { background-color: var(--color-text-primary); }
 
 /* Kein Video bei reduzierter Bewegung – das Standbild genuegt */
